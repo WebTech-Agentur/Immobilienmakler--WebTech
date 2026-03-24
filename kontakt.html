@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | Velaris Homes</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-primary);
+            background: white;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-accent);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(200, 169, 106, 0.1);
+        }
+
+        .map-wrapper {
+            height: 450px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--color-gray);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(1) invert(0.1) opacity(0.85);
+            /* Styling google map for luxury look */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Floating Design) -->
+    <header class="header">
+        <div class="header-box">
+            <a href="index.html" class="logo">Velaris<span>Homes</span></a>
+            <nav class="nav">
+                <a href="index.html">Startseite</a>
+                <a href="immobilien.html">Immobilien</a>
+                <a href="ueber-uns.html">Über uns</a>
+                <a href="leistungen.html">Leistungen</a>
+                <a href="kontakt.html" class="active">Kontakt</a>
+            </nav>
+            <div class="actions">
+                <a href="kontakt.html" class="cta">Besichtigung</a>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 90px;">
+
+        <!-- Header -->
+        <section class="section-padding" style="background-color: var(--color-bg-main); text-align: center;">
+            <div class="container fade-in">
+                <h4 style="color: var(--color-accent); text-transform: uppercase;">Kontakt</h4>
+                <h1 style="font-size: 4rem; margin-bottom: 20px;">Sprechen wir über <br>Ihre Wohnträume</h1>
+                <p style="font-size: 1.2rem; opacity: 0.8; max-width: 700px; margin: 0 auto;">Ob Beratung,
+                    Wertermittlung oder Besichtigung – wir sind persönlich für Sie da.</p>
+            </div>
+        </section>
+
+        <!-- Form and Info -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="contact-grid">
+
+                    <!-- Form -->
+                    <div class="fade-in">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 35px;">Schreiben Sie uns</h2>
+                        <form action="#"
+                            onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze.');">
+                            <div class="form-group">
+                                <label>Vollständiger Name</label>
+                                <input type="text" placeholder="Julian Franke" required>
+                            </div>
+                            <div class="form-group">
+                                <label>E-Mail Adresse</label>
+                                <input type="email" placeholder="m.muster@347gmail.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nachricht</label>
+                                <textarea rows="6" placeholder="Wie können wir Ihnen helfen?"></textarea>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; padding: 18px;">Nachricht
+                                senden</button>
+                        </form>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="fade-in" style="transition-delay: 0.2s;">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 35px;">Anfahrt & Details</h2>
+                        <div style="margin-bottom: 40px;">
+                            <p
+                                style="font-weight: 800; text-transform: uppercase; font-size: 0.8rem; color: var(--color-accent);">
+                                Standort</p>
+                            <p style="font-size: 1.2rem; margin-top: 10px;">Max-Eyth-Straße 681<br>89415 Lauingen
+                                (Donau)</p>
+                        </div>
+                        <div style="margin-bottom: 40px;">
+                            <p
+                                style="font-weight: 800; text-transform: uppercase; font-size: 0.8rem; color: var(--color-accent);">
+                                Kontakt</p>
+                            <p style="font-size: 1.2rem; margin-top: 10px;">Büro: +49 15566284478<br>E-Mail:
+                                anfrage@velaris-homes.de</p>
+                            <a href="https://wa.me/15566284478" target="_blank"
+                                style="display: flex; gap: 10px; align-items: center; color: #25D366; font-weight: 700; margin-top: 20px;">
+                                <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i> WhatsApp Direktkontakt
+                            </a>
+                        </div>
+                        <div>
+                            <p
+                                style="font-weight: 800; text-transform: uppercase; font-size: 0.8rem; color: var(--color-accent);">
+                                Öffnungszeiten</p>
+                            <p style="font-size: 1.2rem; margin-top: 10px;">Mo - Fr: 09:00 - 18:00 Uhr<br>Sa: Nach
+                                Vereinbarung</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Map Integration -->
+                <div class="map-wrapper fade-in">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.1!2d10.42!3d48.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDMzJzM2LjAiTiAxMMKwMjUnMTIuMCJF!5e0!3m2!1sde!2sde!4v1680000000000"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"
+                        style="color: white; font-size: 2rem; display: block; margin-bottom: 30px;">Velaris<span>Homes</span></a>
+                    <p>Ihre Experten für exklusive Immobilienvermittlung. Seit über 20 Jahren verbinden wir Luxus mit
+                        Transparenz und Professionalität.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Menü</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Startseite</a>
+                        <a href="immobilien.html">Immobilien</a>
+                        <a href="ueber-uns.html">Über uns</a>
+                        <a href="leistungen.html">Leistungen</a>
+                        <a href="kontakt.html">Kontakt</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <div class="footer-links">
+                        <a href="#">Kaufen</a>
+                        <a href="#">Verkaufen</a>
+                        <a href="#">Mieten</a>
+                        <a href="#">Wertermittlung</a>
+                        <a href="#">Finanzierung</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontakt</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 15px; color: var(--color-accent);"></i>
+                        Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
+                    <p><i class="fas fa-phone" style="margin-right: 15px; color: var(--color-accent);"></i> +49 15566284478</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 15px; color: var(--color-accent);"></i> anfrage@velaris-homes.de</p>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; opacity: 0.5; font-size: 0.85rem;">
+                <p>&copy; 2026 Velaris Homes Immobilien | <a href="impressum.html"
+                        style="margin: 0 10px; color: var(--color-accent);">Impressum</a> | <a href="datenschutz.html"
+                        style="margin: 0 10px; color: var(--color-accent);">Datenschutz</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/15566284478" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+
+</html>

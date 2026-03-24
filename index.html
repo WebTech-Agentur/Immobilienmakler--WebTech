@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velaris Homes | Ihr Partner für moderne Immobilienvermittlung</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header (Floating Design) -->
+    <header class="header">
+        <div class="header-box">
+            <a href="index.html" class="logo">Velaris<span>Homes</span></a>
+            <nav class="nav">
+                <a href="index.html" class="active">Startseite</a>
+                <a href="immobilien.html">Immobilien</a>
+                <a href="ueber-uns.html">Über uns</a>
+                <a href="leistungen.html">Leistungen</a>
+                <a href="kontakt.html">Kontakt</a>
+            </nav>
+            <div class="actions">
+                <a href="kontakt.html" class="cta">Besichtigung</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6199f7d009?q=80&w=2070&auto=format&fit=crop"
+                alt="Modern Luxury Villa">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Ihr Partner für moderne <br>Immobilienvermittlung</h1>
+                <p>Luxuriöses Wohnen in den besten Lagen Deutschlands. Exklusiv, diskret und professionell.</p>
+
+                <!-- Quick Search Box -->
+                <div class="search-box">
+                    <div class="search-field">
+                        <label>Typ</label>
+                        <select id="search-type">
+                            <option value="kaufen">Kaufen</option>
+                            <option value="mieten">Mieten</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label>Kategorie</label>
+                        <select id="search-category">
+                            <option value="villa">Villa</option>
+                            <option value="penthouse">Penthouse</option>
+                            <option value="haus">Haus</option>
+                            <option value="wohnung">Wohnung</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label>Ort</label>
+                        <input type="text" id="search-location" placeholder="Stadt, PLZ oder Kiez">
+                    </div>
+                    <div class="search-field">
+                        <label>Preis bis</label>
+                        <select id="search-price">
+                            <option value="any">Beliebig €</option>
+                            <option value="500000">500.000 €</option>
+                            <option value="1000000">1.000.000 €</option>
+                            <option value="2500000">2.500.000 €</option>
+                            <option value="5000000">5.000.000 €</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" id="main-search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Creative Intro Section -->
+    <section class="section-padding intro-section">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="fade-in">
+                    <span class="intro-subtitle">Willkommen bei Velaris Homes</span>
+                    <h2 class="intro-title">Wir finden den Ort, an dem Ihre Geschichte weitergeht.</h2>
+                    <p class="intro-text">
+                        Als spezialisierte Makler für Premium-Immobilien verbinden wir höchste Marktkenntnis mit einem
+                        exklusiven Netzwerk. Vertrauen Sie auf über 20 Jahre Erfahrung in der Vermittlung von
+                        außergewöhnlichen Wohnobjekten.
+                    </p>
+                    <div class="intro-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Verkaufte Objekte</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1.2 Mrd</span>
+                            <span class="stat-label">Marktvolumen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro-image-wrapper fade-in">
+                    <div class="intro-image-decor"></div>
+                    <img src="https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Exklusive Premium Immobilie" class="intro-image-main">
+                    <div class="experience-badge">
+                        <span class="num">20</span>
+                        <span class="txt">Jahre<br>Expertise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Properties -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="fade-in"
+                style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; gap: 20px;">
+                <div class="responsive-title-group" style="text-align: inherit;">
+                    <span class="intro-subtitle">Top Angebote</span>
+                    <h2 class="intro-title" style="margin-bottom: 0;">Aktuelle Highlights</h2>
+                </div>
+                <a href="immobilien.html" class="btn btn-outline">Alle Immobilien <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="property-grid">
+                <!-- Highlight 1 -->
+                <div class="property-card fade-in">
+                    <div class="property-img">
+                        <span class="property-badge">Verkauf</span>
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+                            alt="Villa am See">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">4.250.000 €</div>
+                        <h3 class="property-title">Moderne See-Villa mit Privatsteg</h3>
+                        <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"
+                                style="color: var(--color-accent);"></i> Starnberger See, Bayern</p>
+                        <div class="property-features">
+                            <span><i class="fas fa-vector-square"></i> 380 m²</span>
+                            <span><i class="fas fa-bed"></i> 8 Zi.</span>
+                            <span><i class="fas fa-bath"></i> 4 Bäder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight 2 -->
+                <div class="property-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="property-img">
+                        <span class="property-badge">Verkauf</span>
+                        <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=2070&auto=format&fit=crop"
+                            alt="Penthouse Berlin">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">2.890.000 €</div>
+                        <h3 class="property-title">Skyline Penthouse über Berlin</h3>
+                        <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"
+                                style="color: var(--color-accent);"></i> Mitte, Berlin</p>
+                        <div class="property-features">
+                            <span><i class="fas fa-vector-square"></i> 210 m²</span>
+                            <span><i class="fas fa-bed"></i> 4 Zi.</span>
+                            <span><i class="fas fa-bath"></i> 2 Bäder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight 3 -->
+                <div class="property-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="property-img">
+                        <span class="property-badge">Option</span>
+                        <img src="https://images.homify.com/v1465391809/p/photo/image/1539953/C01_FRAME_02.jpg"
+                            alt="Modernes Loft">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">1.450.000 €</div>
+                        <h3 class="property-title">Industrie-Loft mit Loft-Charakter</h3>
+                        <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"
+                                style="color: var(--color-accent);"></i> Eppendorf, Hamburg</p>
+                        <div class="property-features">
+                            <span><i class="fas fa-vector-square"></i> 180 m²</span>
+                            <span><i class="fas fa-bed"></i> 3 Zi.</span>
+                            <span><i class="fas fa-bath"></i> 2 Bäder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight 4 -->
+                <div class="property-card fade-in" style="animation-delay: 0.6s;">
+                    <div class="property-img">
+                        <span class="property-badge">Neu</span>
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop"
+                            alt="Historisches Anwesen">
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">3.450.000 €</div>
+                        <h3 class="property-title">Historisches Anwesen im Schwarzwald</h3>
+                        <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"
+                                style="color: var(--color-accent);"></i> Baden-Baden, Lichtental</p>
+                        <div class="property-features">
+                            <span><i class="fas fa-vector-square"></i> 420 m²</span>
+                            <span><i class="fas fa-bed"></i> 10 Zi.</span>
+                            <span><i class="fas fa-bath"></i> 5 Bäder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action (Assessment) -->
+    <section class="section-padding" style="background-color: var(--color-bg-main); color: var(--color-text-dark); text-align: center;">
+        <div class="container fade-in">
+            <h2 style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 20px;">Was ist Ihre Immobilie wert?</h2>
+            <p style="font-size: 1.1rem; color: var(--color-text-muted); max-width: 700px; margin: 0 auto 35px;">Kostenlose
+                Marktwertermittlung Ihres Objekts in nur wenigen Schritten. Schnell, diskret und unverbindlich.</p>
+            <a href="leistungen.html" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">
+                Jetzt Immobilie bewerten
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"
+                        style="color: white; font-size: 2rem; display: block; margin-bottom: 30px;">Velaris<span>Homes</span></a>
+                    <p>Ihre Experten für exklusive Immobilienvermittlung. Seit über 20 Jahren verbinden wir Luxus mit
+                        Transparenz und Professionalität.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Menü</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Startseite</a>
+                        <a href="immobilien.html">Immobilien</a>
+                        <a href="ueber-uns.html">Über uns</a>
+                        <a href="leistungen.html">Leistungen</a>
+                        <a href="kontakt.html">Kontakt</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <div class="footer-links">
+                        <a href="#">Kaufen</a>
+                        <a href="#">Verkaufen</a>
+                        <a href="#">Mieten</a>
+                        <a href="#">Wertermittlung</a>
+                        <a href="#">Finanzierung</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontakt</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 15px; color: var(--color-accent);"></i>
+                        Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
+                    <p><i class="fas fa-phone" style="margin-right: 15px; color: var(--color-accent);"></i> +49
+                        15566284478</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 15px; color: var(--color-accent);"></i>
+                        anfrage@velaris-homes.de</p>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; opacity: 0.5; font-size: 0.85rem;">
+                <p>&copy; 2026 Velaris Homes Immobilien | <a href="impressum.html"
+                        style="margin: 0 10px; color: var(--color-accent);">Impressum</a> | <a href="datenschutz.html"
+                        style="margin: 0 10px; color: var(--color-accent);">Datenschutz</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/15566284478" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Search Functionality Script -->
+    <script>
+        document.getElementById('main-search-btn').addEventListener('click', function() {
+            const type = document.getElementById('search-type').value;
+            const category = document.getElementById('search-category').value;
+            const location = document.getElementById('search-location').value;
+            const price = document.getElementById('search-price').value;
+
+            // Build query string
+            const params = new URLSearchParams({
+                type: type,
+                category: category,
+                location: location,
+                price: price
+            });
+
+            // Redirect to properties page
+            window.location.href = `immobilien.html?${params.toString()}`;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immobilien finden | Velaris Homes</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .filter-header {
+            background-color: var(--color-gray-light);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--color-gray);
+            position: sticky;
+            top: 90px;
+            z-index: 900;
+        }
+
+        .map-preview {
+            background-color: #e2e8f0;
+            height: 400px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-switch {
+            display: flex;
+            background: var(--color-white);
+            padding: 5px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+            gap: 5px;
+        }
+
+        .view-switch button {
+            padding: 8px 24px;
+            border-radius: 50px;
+            border: none;
+            background: transparent;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .view-switch .active {
+            background: var(--color-dark);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Floating Design) -->
+    <header class="header">
+        <div class="header-box">
+            <a href="index.html" class="logo">Velaris<span>Homes</span></a>
+            <nav class="nav">
+                <a href="index.html">Startseite</a>
+                <a href="immobilien.html" class="active">Immobilien</a>
+                <a href="ueber-uns.html">Über uns</a>
+                <a href="leistungen.html">Leistungen</a>
+                <a href="kontakt.html">Kontakt</a>
+            </nav>
+            <div class="actions">
+                <a href="kontakt.html" class="cta">Besichtigung</a>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 90px;">
+
+        <!-- Filter Area -->
+        <section class="filter-header" style="background-color: var(--color-bg-main);">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
+                    <div class="title-group">
+                        <span class="intro-subtitle">Portfolio</span>
+                        <h1 class="intro-title" style="margin-bottom: 0;">Aktuelle Immobilien</h1>
+                    </div>
+                    <div class="view-switch">
+                        <button class="active"><i class="fas fa-th-large"></i> Liste</button>
+                        <button><i class="fas fa-map-marked-alt"></i> Karte</button>
+                    </div>
+                </div>
+
+                <div class="search-box" style="background: white; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+                    <div class="search-field">
+                        <label>Typ</label>
+                        <select id="filter-type">
+                            <option value="alle">Alle</option>
+                            <option value="kaufen">Kaufen</option>
+                            <option value="mieten">Mieten</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label>Kategorie</label>
+                        <select id="filter-category">
+                            <option value="alle">Alle Kategorien</option>
+                            <option value="villa">Villa</option>
+                            <option value="penthouse">Penthouse</option>
+                            <option value="haus">Haus</option>
+                            <option value="wohnung">Wohnung</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label>Ort</label>
+                        <input type="text" id="filter-search" placeholder="Stadt, PLZ oder Kiez">
+                    </div>
+                    <div class="search-field">
+                        <label>Preis bis</label>
+                        <select id="filter-price">
+                            <option value="any">Beliebig €</option>
+                            <option value="500000">500.000 €</option>
+                            <option value="1000000">1.000.000 €</option>
+                            <option value="2500000">2.500.000 €</option>
+                            <option value="5000000">5.000.000 €</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" id="filter-submit-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results / Property List -->
+        <section class="section-padding">
+            <div class="container">
+                <p style="margin-bottom: 30px; font-weight: 700; color: var(--color-text-muted);">24 Immobilien gefunden
+                </p>
+
+                <div class="property-grid">
+                    <!-- Property 1 -->
+                    <div class="property-card fade-in" data-title="Moderne See-Villa mit Privatsteg"
+                        data-price="4.250.000 €" data-location="Bayern" data-area="380 m²" data-rooms="8 Zi."
+                        data-bath="4 Bäder"
+                        data-img="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+                        data-desc="Diese außergewöhnliche See-Villa vereint modernen Minimalismus mit naturnahem Luxus. Das großzügige Grundstück bietet direkten Seezugang und einen privaten Steg. Hochwertigste Materialien und ein durchdachtes Lichtkonzept schaffen ein exklusives Wohnerlebnis.">
+                        <div class="property-img">
+                            <span class="property-badge">Verkauf</span>
+                            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+                                alt="Villa am See">
+                        </div>
+                        <div class="property-info">
+                            <div class="property-price">4.250.000 €</div>
+                            <h3 class="property-title">Moderne See-Villa mit Privatsteg</h3>
+                            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i
+                                    class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i> Bayern</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-vector-square"></i> 380 m²</span>
+                                <span><i class="fas fa-bed"></i> 8 Zi.</span>
+                                <span><i class="fas fa-bath"></i> 4 Bäder</span>
+                            </div>
+                            <div style="margin-top: 25px;">
+                                <a href="javascript:void(0)" class="btn btn-dark btn-details"
+                                    style="width: 100%;">Details ansehen</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 2 -->
+                    <div class="property-card fade-in" style="animation-delay: 0.1s;"
+                        data-title="Luxus-Penthouse über den Dächern Berlins" data-price="6.500 € / Monat"
+                        data-location="Mitte, Berlin" data-area="220 m²" data-rooms="4 Zi." data-bath="2 Bäder"
+                        data-img="https://images.unsplash.com/photo-1565623833408-d77e39b88af6?q=80&w=1632&auto=format&fit=crop"
+                        data-desc="Elegantes Penthouse-Wohnen im Herzen der Metropole. Dieses Objekt besticht durch seine umlaufende Dachterrasse, bodentiefe Fensterfronten und ein Smart-Home-System auf dem neuesten Stand. Genießen Sie den Sonnenuntergang über der Skyline.">
+                        <div class="property-img">
+                            <span class="property-badge">Miete</span>
+                            <img src="https://images.unsplash.com/photo-1565623833408-d77e39b88af6?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Luxus-Penthouse über den Dächern Berlins">
+                        </div>
+                        <div class="property-info">
+                            <div class="property-price">6.500 € / Monat</div>
+                            <h3 class="property-title">Luxus-Penthouse über den Dächern Berlins</h3>
+                            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i
+                                    class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i> Mitte, Berlin
+                            </p>
+                            <div class="property-features">
+                                <span><i class="fas fa-vector-square"></i> 220 m²</span>
+                                <span><i class="fas fa-bed"></i> 4 Zi.</span>
+                                <span><i class="fas fa-bath"></i> 2 Bäder</span>
+                            </div>
+                            <div style="margin-top: 25px;">
+                                <a href="javascript:void(0)" class="btn btn-dark btn-details"
+                                    style="width: 100%;">Details ansehen</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 3 -->
+                    <div class="property-card fade-in" style="animation-delay: 0.2s;"
+                        data-title="Klassisches Anwesen im Hamburger Umland" data-price="1.890.000 €"
+                        data-location="Blankenese, Hamburg" data-area="290 m²" data-rooms="7 Zi." data-bath="3 Bäder"
+                        data-img="https://images.unsplash.com/photo-1512914890251-2f96a9b0bbe2?q=80&w=1000&auto=format&fit=crop"
+                        data-desc="Zeitlose Eleganz in privilegierter Lage. Dieses hanseatische Anwesen bietet viel Platz für die ganze Familie. Die historische Grundstruktur wurde liebevoll saniert und mit modernster Technik ergänzt. Ein traumhafter Garten rundet das Portfolio ab.">
+                        <div class="property-img">
+                            <span class="property-badge">Verkauf</span>
+                            <img src="https://images.unsplash.com/photo-1512914890251-2f96a9b0bbe2?q=80&w=1000&auto=format&fit=crop"
+                                alt="Villa">
+                        </div>
+                        <div class="property-info">
+                            <div class="property-price">1.890.000 €</div>
+                            <h3 class="property-title">Klassisches Anwesen im Hamburger Umland</h3>
+                            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i
+                                    class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i> Blankenese,
+                                Hamburg</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-vector-square"></i> 290 m²</span>
+                                <span><i class="fas fa-bed"></i> 7 Zi.</span>
+                                <span><i class="fas fa-bath"></i> 3 Bäder</span>
+                            </div>
+                            <div style="margin-top: 25px;">
+                                <a href="javascript:void(0)" class="btn btn-dark btn-details"
+                                    style="width: 100%;">Details ansehen</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate for demo... -->
+                    <!-- Property 4 -->
+                    <div class="property-card fade-in" style="animation-delay: 0.3s;"
+                        data-title="Design-Residenz mit Infinity-Pool" data-price="5.980.000 €"
+                        data-location="Grünwald, München" data-area="450 m²" data-rooms="9 Zi." data-bath="5 Bäder"
+                        data-img="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1000&auto=format&fit=crop"
+                        data-desc="Ein architektonisches Meisterwerk in bester Lage von Grünwald. Diese Residenz besticht durch offene Raumkonzepte, einen atemberaubenden Infinity-Pool und absolute Privatsphäre. Nur erlesenste Materialien wurden hier verbaut.">
+                        <div class="property-img">
+                            <span class="property-badge">Verkauf</span>
+                            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1000&auto=format&fit=crop"
+                                alt="Villa">
+                        </div>
+                        <div class="property-info">
+                            <div class="property-price">5.980.000 €</div>
+                            <h3 class="property-title">Design-Residenz mit Infinity-Pool</h3>
+                            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i
+                                    class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i> Grünwald,
+                                München</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-vector-square"></i> 450 m²</span>
+                                <span><i class="fas fa-bed"></i> 9 Zi.</span>
+                                <span><i class="fas fa-bath"></i> 5 Bäder</span>
+                            </div>
+                            <div style="margin-top: 25px;">
+                                <a href="javascript:void(0)" class="btn btn-dark btn-details"
+                                    style="width: 100%;">Details ansehen</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 5 -->
+                    <div class="property-card fade-in" style="animation-delay: 0.4s;"
+                        data-title="Exklusives Alpen-Chalet mit Panorama" data-price="5.800.000 €"
+                        data-location="Kitzbühel, Österreich" data-area="320 m²" data-rooms="6 Zi." data-bath="3 Bäder"
+                        data-img="https://images.unsplash.com/photo-1549517045-bc93de075e53?q=80&w=1000&auto=format&fit=crop"
+                        data-desc="Traditioneller Charme trifft auf modernen Luxus. Dieses Chalet bietet einen unverbaubaren Blick auf den Hahnenkamm. Ein eigener Wellnessbereich mit Sauna und Dampfbad sorgt für Entspannung nach einem Tag auf der Piste.">
+                        <div class="property-img">
+                            <span class="property-badge">Verkauf</span>
+                            <img src="https://images.unsplash.com/photo-1549517045-bc93de075e53?q=80&w=1000&auto=format&fit=crop"
+                                alt="Chalet">
+                        </div>
+                        <div class="property-info">
+                            <div class="property-price">5.800.000 €</div>
+                            <h3 class="property-title">Exklusives Alpen-Chalet mit Panorama</h3>
+                            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i
+                                    class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i> Kitzbühel,
+                                Österreich</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-vector-square"></i> 320 m²</span>
+                                <span><i class="fas fa-bed"></i> 6 Zi.</span>
+                                <span><i class="fas fa-bath"></i> 3 Bäder</span>
+                            </div>
+                            <div style="margin-top: 25px;">
+                                <a href="javascript:void(0)" class="btn btn-dark btn-details"
+                                    style="width: 100%;">Details ansehen</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 6 -->
+                    <div class="property-card fade-in" style="animation-delay: 0.5s;"
+                        data-title="Modernes Stadthaus mit Westend-Flair" data-price="1.450.000 €"
+                        data-location="Westend, Frankfurt" data-area="190 m²" data-rooms="4 Zi." data-bath="2 Bäder"
+                        data-img="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        data-desc="Urbanes Wohnen auf höchstem Niveau. Dieses modernisierte Stadthaus besticht durch klare Linien und eine intelligente Raumaufteilung. Die ruhige Hinterhoflage garantiert Entspannung inmitten der pulsierenden Stadt.">
+                        <div class="property-img">
+                            <span class="property-badge">Verkauf</span>
+                            <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Stadthaus">
+                        </div>
+                        <div class="property-info">
+                            <div class="property-price">1.450.000 €</div>
+                            <h3 class="property-title">Modernes Stadthaus mit Westend-Flair</h3>
+                            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i
+                                    class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i> Westend,
+                                Frankfurt</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-vector-square"></i> 190 m²</span>
+                                <span><i class="fas fa-bed"></i> 4 Zi.</span>
+                                <span><i class="fas fa-bath"></i> 2 Bäder</span>
+                            </div>
+                            <div style="margin-top: 25px;">
+                                <a href="javascript:void(0)" class="btn btn-dark btn-details"
+                                    style="width: 100%;">Details ansehen</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 7 -->
+                    <div class="property-card fade-in" style="animation-delay: 0.6s;"
+                        data-title="Designer-Loft in der HafenCity" data-price="4.200 € / Monat"
+                        data-location="Hafencity, Hamburg" data-area="145 m²" data-rooms="3 Zi." data-bath="2 Bäder"
+                        data-img="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000&auto=format&fit=crop"
+                        data-desc="Dieses Loft bietet ein einzigartiges Wohngefühl mit Blick auf die Elbphilharmonie. Die Kombination aus Sichtbeton, Glas und warmen Holzelementen schafft eine unverwechselbare Atmosphäre. Eine Bulthaup-Küche ist bereits integriert.">
+                        <div class="property-img">
+                            <span class="property-badge">Miete</span>
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000&auto=format&fit=crop"
+                                alt="Loft">
+                        </div>
+                        <div class="property-info">
+                            <div class="property-price">4.200 € / Monat</div>
+                            <h3 class="property-title">Designer-Loft in der HafenCity</h3>
+                            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i
+                                    class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i> Hafencity,
+                                Hamburg</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-vector-square"></i> 145 m²</span>
+                                <span><i class="fas fa-bed"></i> 3 Zi.</span>
+                                <span><i class="fas fa-bath"></i> 2 Bäder</span>
+                            </div>
+                            <div style="margin-top: 25px;">
+                                <a href="javascript:void(0)" class="btn btn-dark btn-details"
+                                    style="width: 100%;">Details ansehen</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 8 -->
+                    <div class="property-card fade-in" style="animation-delay: 0.7s;"
+                        data-title="Sanierter Gutshof für Naturliebhaber" data-price="2.100.000 €"
+                        data-location="Ostprignitz, Brandenburg" data-area="480 m²" data-rooms="12 Zi."
+                        data-bath="4 Bäder"
+                        data-img="https://images.unsplash.com/photo-1590266830010-7bf5c3339536?q=80&w=1170&auto=format&fit=crop"
+                        data-desc="Weite, Ruhe und Geschichte. Dieser liebevoll sanierte Gutshof bietet enorme Entfaltungsmöglichkeiten auf einem weitläufigen Areal. Ob als Mehrgenerationenhaus oder exklusiver Rückzugsort – hier werden Träume wahr.">
+                        <div class="property-img">
+                            <span class="property-badge">Verkauf</span>
+                            <img src="https://images.unsplash.com/photo-1590266830010-7bf5c3339536?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Sanierter Gutshof für Naturliebhaber">
+                        </div>
+                        <div class="property-info">
+                            <div class="property-price">2.100.000 €</div>
+                            <h3 class="property-title">Sanierter Gutshof für Naturliebhaber</h3>
+                            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><i
+                                    class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i> Ostprignitz,
+                                Brandenburg</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-vector-square"></i> 480 m²</span>
+                                <span><i class="fas fa-bed"></i> 12 Zi.</span>
+                                <span><i class="fas fa-bath"></i> 4 Bäder</span>
+                            </div>
+                            <div style="margin-top: 25px;">
+                                <a href="javascript:void(0)" class="btn btn-dark btn-details"
+                                    style="width: 100%;">Details ansehen</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Details Modal -->
+    <div id="details-modal" class="modal">
+        <div class="modal-container">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-image">
+                <img src="" id="modal-img" alt="Property">
+            </div>
+            <div class="modal-body">
+                <span class="modal-tag" id="modal-tag">Exklusiv</span>
+                <h2 class="modal-title" id="modal-title">Objekt Details</h2>
+                <div class="modal-price" id="modal-price">0 €</div>
+                <p class="modal-desc" id="modal-desc">Beschreibung wird geladen...</p>
+
+                <div class="modal-features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-vector-square"></i>
+                        <span id="modal-area">0 m²</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bed"></i>
+                        <span id="modal-rooms">0 Zi.</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bath"></i>
+                        <span id="modal-bath">0 Bäder</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="modal-location">Standort</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: auto;">
+                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; padding: 18px;">Anfrage
+                        senden</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"
+                        style="color: white; font-size: 2rem; display: block; margin-bottom: 30px;">Velaris<span>Homes</span></a>
+                    <p>Ihre Experten für exklusive Immobilienvermittlung. Seit über 20 Jahren verbinden wir Luxus mit
+                        Transparenz und Professionalität.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Menü</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Startseite</a>
+                        <a href="immobilien.html">Immobilien</a>
+                        <a href="ueber-uns.html">Über uns</a>
+                        <a href="leistungen.html">Leistungen</a>
+                        <a href="kontakt.html">Kontakt</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <div class="footer-links">
+                        <a href="#">Kaufen</a>
+                        <a href="#">Verkaufen</a>
+                        <a href="#">Mieten</a>
+                        <a href="#">Wertermittlung</a>
+                        <a href="#">Finanzierung</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontakt</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 15px; color: var(--color-accent);"></i>
+                        Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
+                    <p><i class="fas fa-phone" style="margin-right: 15px; color: var(--color-accent);"></i> +49 15566284478</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 15px; color: var(--color-accent);"></i> anfrage@velaris-homes.de</p>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; opacity: 0.5; font-size: 0.85rem;">
+                <p>&copy; 2026 Velaris Homes Immobilien | <a href="impressum.html"
+                        style="margin: 0 10px; color: var(--color-accent);">Impressum</a> | <a href="datenschutz.html"
+                        style="margin: 0 10px; color: var(--color-accent);">Datenschutz</a></p>
+            </div>
+
+            <!-- WhatsApp Button -->
+            <a href="https://wa.me/15566284478" target="_blank" class="whatsapp-float">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+            <!-- Filter Logic Script -->
+            <script>
+                window.addEventListener('DOMContentLoaded', (event) => {
+                    const urlParams = new URLSearchParams(window.location.search);
+
+                    const type = urlParams.get('type');
+                    const location = urlParams.get('location');
+                    const price = urlParams.get('price');
+                    const category = urlParams.get('category');
+
+                    if (type) document.getElementById('filter-type').value = type;
+                    if (location) document.getElementById('filter-search').value = location;
+                    if (price) document.getElementById('filter-price').value = price;
+
+                    // Note: In a real app, 'category' would trigger a data filter here
+                    if (category) {
+                        console.log("Filtering for category:", category);
+                    }
+                });
+
+                document.getElementById('filter-submit-btn').addEventListener('click', function () {
+                    alert("Filter werden angewendet... (Backend-Anbindung erforderlich)");
+                });
+
+                // Modal Logic
+                const modal = document.getElementById('details-modal');
+                const modalClose = document.querySelector('.modal-close');
+                const detailButtons = document.querySelectorAll('.btn-details');
+
+                detailButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const card = btn.closest('.property-card');
+
+                        // Fill Modal
+                        document.getElementById('modal-title').innerText = card.getAttribute('data-title');
+                        document.getElementById('modal-price').innerText = card.getAttribute('data-price');
+                        document.getElementById('modal-desc').innerText = card.getAttribute('data-desc');
+                        document.getElementById('modal-area').innerText = card.getAttribute('data-area');
+                        document.getElementById('modal-rooms').innerText = card.getAttribute('data-rooms');
+                        document.getElementById('modal-bath').innerText = card.getAttribute('data-bath');
+                        document.getElementById('modal-location').innerText = card.getAttribute('data-location');
+                        document.getElementById('modal-img').src = card.getAttribute('data-img');
+
+                        // Show Modal
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent scroll
+                    });
+                });
+
+                modalClose.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+
+                // Close on click outside
+                window.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            </script>
+</body>
+
+</html>
