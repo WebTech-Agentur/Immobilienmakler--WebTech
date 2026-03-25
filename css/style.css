@@ -311,7 +311,28 @@ a {
   transform: translateY(-2px);
 }
 
-/* VALUES SECTION */
+/* SERVICES SECTION */
+.services-grid-3, .services-grid-2 {
+    display: grid;
+    gap: 40px;
+}
+
+.services-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.services-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 992px) {
+    .services-grid-3, .services-grid-2 {
+        grid-template-columns: 1fr;
+    }
+    .service-category-title {
+        font-size: 1.8rem !important;
+    }
+}
 .section-title-wrap {
     text-align: center;
     margin-bottom: 60px;
