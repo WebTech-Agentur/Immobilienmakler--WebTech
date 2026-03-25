@@ -20,33 +20,63 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
-        .privacy-box {
-            max-width: 800px;
-            margin: 0 auto;
+        .legal-hero {
+            background: linear-gradient(rgba(15, 76, 92, 0.9), rgba(15, 76, 92, 0.95)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0 100px;
+            text-align: center;
+            color: white;
         }
 
-        .privacy-box h2 {
-            font-size: 2.2rem;
-            margin-top: 50px;
-            margin-bottom: 25px;
+        .privacy-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .privacy-card h2 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .privacy-card h2 i {
             color: var(--color-accent);
         }
 
-        .privacy-box p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        .privacy-box ul {
-            margin-bottom: 20px;
-            list-style: disc;
-            padding-left: 20px;
-            color: var(--color-text-muted);
+        .right-item {
+            background: var(--color-bg-main);
+            padding: 25px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            transition: var(--transition);
         }
 
-        .privacy-box ul li {
-            margin-bottom: 10px;
+        .right-item:hover {
+            background: var(--color-accent);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .right-item i {
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -69,44 +99,74 @@
         </div>
     </header>
 
-    <main style="padding-top: 150px; padding-bottom: 100px;">
+    <section class="legal-hero">
         <div class="container fade-in">
-            <h1 style="font-size: 3rem; margin-bottom: 50px; border-bottom: 1px solid var(--color-gray); padding-bottom: 20px; text-align: center;">Datenschutzerklärung</h1>
+            <span class="intro-subtitle" style="color: var(--color-accent);">Sicherheit & Vertrauen</span>
+            <h1 style="color: white; font-size: 3.5rem;">Datenschutz</h1>
+        </div>
+    </section>
+
+    <main style="padding: 100px 0;">
+        <div class="container fade-in">
             
-            <div class="privacy-box">
-                <h2>1. Datenschutz auf einen Blick</h2>
-                <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
-                
-                <h2>2. Verantwortliche Stelle</h2>
-                <p>Der Verantwortliche für die Datenverarbeitung auf dieser Website ist:</p>
-                <p>
-                    Velaris Homes Immobilien GmbH<br>
-                    Max-Eyth-Straße 681<br>
-                    89415 Lauingen (Donau)<br>
-                    Deutschland<br>
-                    E-Mail: anfrage@velaris-homes.de
+            <div class="privacy-card">
+                <h2><i class="fas fa-shield-alt"></i> 1. Datenschutz auf einen Blick</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-muted);">
+                    Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.
                 </p>
-
-                <h2>3. Erfassung von Daten</h2>
-                <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
-
-                <h2>4. Ihre Rechte</h2>
-                <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen.</p>
-                <ul>
-                    <li>Auskunftsrecht (Art. 15 DSGVO)</li>
-                    <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
-                    <li>Recht auf Löschung (Art. 17 DSGVO)</li>
-                    <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-                    <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
-                    <li>Widerspruchsrecht (Art. 21 DSGVO)</li>
-                </ul>
-
-                <h2>5. Analyse-Tools und Tools von Drittanbietern</h2>
-                <p>Beim Besuch unserer Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem mit Cookies und mit sogenannten Analyseprogrammen. Die Analyse Ihres Surf-Verhaltens erfolgt in der Regel anonym; das Surf-Verhalten kann nicht zu Ihnen zurückverfolgt werden.</p>
-                
-                <h2>6. Kontaktformular</h2>
-                <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
             </div>
+
+            <div class="privacy-card">
+                <h2><i class="fas fa-user-check"></i> 2. Verantwortliche Stelle</h2>
+                <div style="background: var(--color-bg-main); padding: 30px; border-radius: var(--radius-md); border-left: 5px solid var(--color-accent);">
+                    <p style="font-weight: 700; color: var(--color-primary); margin-bottom: 5px;">Velaris Homes Immobilien GmbH</p>
+                    <p style="color: var(--color-text-muted);">
+                        Max-Eyth-Straße 681, 89415 Lauingen (Donau)<br>
+                        Deutschland<br>
+                        <strong>E-Mail:</strong> anfrage@velaris-homes.de
+                    </p>
+                </div>
+            </div>
+
+            <div class="privacy-card">
+                <h2><i class="fas fa-fingerprint"></i> 3. Ihre Rechte als Nutzer</h2>
+                <p style="color: var(--color-text-muted); margin-bottom: 30px;">
+                    Im Rahmen der geltenden gesetzlichen Bestimmungen haben Sie jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten. 
+                </p>
+                <div class="rights-grid">
+                    <div class="right-item"><i class="fas fa-info-circle"></i> Auskunftsrecht</div>
+                    <div class="right-item"><i class="fas fa-edit"></i> Berichtigung</div>
+                    <div class="right-item"><i class="fas fa-trash-alt"></i> Löschung</div>
+                    <div class="right-item"><i class="fas fa-ban"></i> Einschränkung</div>
+                    <div class="right-item"><i class="fas fa-exchange-alt"></i> Datenübertrag</div>
+                    <div class="right-item"><i class="fas fa-hand-paper"></i> Widerspruch</div>
+                </div>
+            </div>
+
+            <div class="privacy-card">
+                <h2><i class="fas fa-database"></i> 4. Datenerfassung auf unserer Website</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                    <div>
+                        <h4 style="margin-bottom: 15px; color: var(--color-accent);">Kontaktformular</h4>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted);">
+                            Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular zwecks Bearbeitung der Anfrage bei uns gespeichert.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px; color: var(--color-accent);">Cookies</h4>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted);">
+                            Unsere Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine viren.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px; color: var(--color-accent);">Server-Log-Dateien</h4>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted);">
+                            Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 

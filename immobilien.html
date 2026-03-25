@@ -24,12 +24,23 @@
 
     <style>
         .filter-header {
-            background-color: var(--color-gray-light);
-            padding: 40px 0;
-            border-bottom: 1px solid var(--color-gray);
+            background-color: var(--color-bg-main);
+            padding: 30px 0;
+            border-bottom: 2px solid var(--color-gray);
+            position: -webkit-sticky;
             position: sticky;
-            top: 90px;
-            z-index: 900;
+            top: 110px; /* More space to avoid overlapping the floating header */
+            z-index: 950;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .filter-header.is-sticky {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            padding: 20px 0;
         }
 
         .map-preview {
@@ -89,19 +100,15 @@
         </div>
     </header>
 
-    <main style="padding-top: 90px;">
+    <main style="padding-top: 90px; overflow: visible !important;">
 
         <!-- Filter Area -->
-        <section class="filter-header" style="background-color: var(--color-bg-main);">
+        <section class="filter-header">
             <div class="container">
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
-                    <div class="title-group">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;" class="title-group">
+                    <div class="title-group-text">
                         <span class="intro-subtitle">Portfolio</span>
                         <h1 class="intro-title" style="margin-bottom: 0;">Aktuelle Immobilien</h1>
-                    </div>
-                    <div class="view-switch">
-                        <button class="active"><i class="fas fa-th-large"></i> Liste</button>
-                        <button><i class="fas fa-map-marked-alt"></i> Karte</button>
                     </div>
                 </div>
 
@@ -148,14 +155,20 @@
         <!-- Results / Property List -->
         <section class="section-padding">
             <div class="container">
-                <p style="margin-bottom: 30px; font-weight: 700; color: var(--color-text-muted);">24 Immobilien gefunden
+                <p style="margin-bottom: 30px; font-weight: 700; color: var(--color-text-muted);" id="result-count">24 Immobilien gefunden
                 </p>
 
-                <div class="property-grid">
+                <div id="no-results" style="display: none; text-align: center; padding: 100px 0;">
+                    <i class="fas fa-search" style="font-size: 4rem; color: var(--color-gray); margin-bottom: 30px;"></i>
+                    <h2 style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 20px;">Keine Ergebnisse gefunden</h2>
+                    <p style="font-size: 1.2rem; color: var(--color-text-muted);">Bitte passen Sie Ihre Suchkriterien an oder <br>kontaktieren Sie uns direkt für eine individuelle Suche.</p>
+                </div>
+
+                <div class="property-grid" id="property-grid">
                     <!-- Property 1 -->
                     <div class="property-card fade-in" data-title="Moderne See-Villa mit Privatsteg"
-                        data-price="4.250.000 €" data-location="Bayern" data-area="380 m²" data-rooms="8 Zi."
-                        data-bath="4 Bäder"
+                        data-price="4.250.000 €" data-price-val="4250000" data-location="Bayern" data-area="380 m²" data-rooms="8 Zi."
+                        data-bath="4 Bäder" data-category="villa" data-type="kaufen"
                         data-img="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
                         data-desc="Diese außergewöhnliche See-Villa vereint modernen Minimalismus mit naturnahem Luxus. Das großzügige Grundstück bietet direkten Seezugang und einen privaten Steg. Hochwertigste Materialien und ein durchdachtes Lichtkonzept schaffen ein exklusives Wohnerlebnis.">
                         <div class="property-img">
@@ -182,8 +195,8 @@
 
                     <!-- Property 2 -->
                     <div class="property-card fade-in" style="animation-delay: 0.1s;"
-                        data-title="Luxus-Penthouse über den Dächern Berlins" data-price="6.500 € / Monat"
-                        data-location="Mitte, Berlin" data-area="220 m²" data-rooms="4 Zi." data-bath="2 Bäder"
+                        data-title="Luxus-Penthouse über den Dächern Berlins" data-price="6.500 € / Monat" data-price-val="6500"
+                        data-location="Mitte, Berlin" data-area="220 m²" data-rooms="4 Zi." data-bath="2 Bäder" data-category="penthouse" data-type="mieten"
                         data-img="https://images.unsplash.com/photo-1565623833408-d77e39b88af6?q=80&w=1632&auto=format&fit=crop"
                         data-desc="Elegantes Penthouse-Wohnen im Herzen der Metropole. Dieses Objekt besticht durch seine umlaufende Dachterrasse, bodentiefe Fensterfronten und ein Smart-Home-System auf dem neuesten Stand. Genießen Sie den Sonnenuntergang über der Skyline.">
                         <div class="property-img">
@@ -211,8 +224,8 @@
 
                     <!-- Property 3 -->
                     <div class="property-card fade-in" style="animation-delay: 0.2s;"
-                        data-title="Klassisches Anwesen im Hamburger Umland" data-price="1.890.000 €"
-                        data-location="Blankenese, Hamburg" data-area="290 m²" data-rooms="7 Zi." data-bath="3 Bäder"
+                        data-title="Klassisches Anwesen im Hamburger Umland" data-price="1.890.000 €" data-price-val="1890000"
+                        data-location="Blankenese, Hamburg" data-area="290 m²" data-rooms="7 Zi." data-bath="3 Bäder" data-category="haus" data-type="kaufen"
                         data-img="https://images.unsplash.com/photo-1512914890251-2f96a9b0bbe2?q=80&w=1000&auto=format&fit=crop"
                         data-desc="Zeitlose Eleganz in privilegierter Lage. Dieses hanseatische Anwesen bietet viel Platz für die ganze Familie. Die historische Grundstruktur wurde liebevoll saniert und mit modernster Technik ergänzt. Ein traumhafter Garten rundet das Portfolio ab.">
                         <div class="property-img">
@@ -241,8 +254,8 @@
                     <!-- Duplicate for demo... -->
                     <!-- Property 4 -->
                     <div class="property-card fade-in" style="animation-delay: 0.3s;"
-                        data-title="Design-Residenz mit Infinity-Pool" data-price="5.980.000 €"
-                        data-location="Grünwald, München" data-area="450 m²" data-rooms="9 Zi." data-bath="5 Bäder"
+                        data-title="Design-Residenz mit Infinity-Pool" data-price="5.980.000 €" data-price-val="5980000"
+                        data-location="Grünwald, München" data-area="450 m²" data-rooms="9 Zi." data-bath="5 Bäder" data-category="villa" data-type="kaufen"
                         data-img="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1000&auto=format&fit=crop"
                         data-desc="Ein architektonisches Meisterwerk in bester Lage von Grünwald. Diese Residenz besticht durch offene Raumkonzepte, einen atemberaubenden Infinity-Pool und absolute Privatsphäre. Nur erlesenste Materialien wurden hier verbaut.">
                         <div class="property-img">
@@ -270,8 +283,8 @@
 
                     <!-- Property 5 -->
                     <div class="property-card fade-in" style="animation-delay: 0.4s;"
-                        data-title="Exklusives Alpen-Chalet mit Panorama" data-price="5.800.000 €"
-                        data-location="Kitzbühel, Österreich" data-area="320 m²" data-rooms="6 Zi." data-bath="3 Bäder"
+                        data-title="Exklusives Alpen-Chalet mit Panorama" data-price="5.800.000 €" data-price-val="5800000"
+                        data-location="Kitzbühel, Österreich" data-area="320 m²" data-rooms="6 Zi." data-bath="3 Bäder" data-category="haus" data-type="kaufen"
                         data-img="https://images.unsplash.com/photo-1549517045-bc93de075e53?q=80&w=1000&auto=format&fit=crop"
                         data-desc="Traditioneller Charme trifft auf modernen Luxus. Dieses Chalet bietet einen unverbaubaren Blick auf den Hahnenkamm. Ein eigener Wellnessbereich mit Sauna und Dampfbad sorgt für Entspannung nach einem Tag auf der Piste.">
                         <div class="property-img">
@@ -299,8 +312,8 @@
 
                     <!-- Property 6 -->
                     <div class="property-card fade-in" style="animation-delay: 0.5s;"
-                        data-title="Modernes Stadthaus mit Westend-Flair" data-price="1.450.000 €"
-                        data-location="Westend, Frankfurt" data-area="190 m²" data-rooms="4 Zi." data-bath="2 Bäder"
+                        data-title="Modernes Stadthaus mit Westend-Flair" data-price="1.450.000 €" data-price-val="1450000"
+                        data-location="Westend, Frankfurt" data-area="190 m²" data-rooms="4 Zi." data-bath="2 Bäder" data-category="haus" data-type="kaufen"
                         data-img="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         data-desc="Urbanes Wohnen auf höchstem Niveau. Dieses modernisierte Stadthaus besticht durch klare Linien und eine intelligente Raumaufteilung. Die ruhige Hinterhoflage garantiert Entspannung inmitten der pulsierenden Stadt.">
                         <div class="property-img">
@@ -328,8 +341,8 @@
 
                     <!-- Property 7 -->
                     <div class="property-card fade-in" style="animation-delay: 0.6s;"
-                        data-title="Designer-Loft in der HafenCity" data-price="4.200 € / Monat"
-                        data-location="Hafencity, Hamburg" data-area="145 m²" data-rooms="3 Zi." data-bath="2 Bäder"
+                        data-title="Designer-Loft in der HafenCity" data-price="4.200 € / Monat" data-price-val="4200"
+                        data-location="Hafencity, Hamburg" data-area="145 m²" data-rooms="3 Zi." data-bath="2 Bäder" data-category="wohnung" data-type="mieten"
                         data-img="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000&auto=format&fit=crop"
                         data-desc="Dieses Loft bietet ein einzigartiges Wohngefühl mit Blick auf die Elbphilharmonie. Die Kombination aus Sichtbeton, Glas und warmen Holzelementen schafft eine unverwechselbare Atmosphäre. Eine Bulthaup-Küche ist bereits integriert.">
                         <div class="property-img">
@@ -357,9 +370,8 @@
 
                     <!-- Property 8 -->
                     <div class="property-card fade-in" style="animation-delay: 0.7s;"
-                        data-title="Sanierter Gutshof für Naturliebhaber" data-price="2.100.000 €"
-                        data-location="Ostprignitz, Brandenburg" data-area="480 m²" data-rooms="12 Zi."
-                        data-bath="4 Bäder"
+                        data-title="Sanierter Gutshof für Naturliebhaber" data-price="2.100.000 €" data-price-val="2100000"
+                        data-location="Ostprignitz, Brandenburg" data-area="480 m²" data-rooms="12 Zi." data-bath="4 Bäder" data-category="haus" data-type="kaufen"
                         data-img="https://images.unsplash.com/photo-1590266830010-7bf5c3339536?q=80&w=1170&auto=format&fit=crop"
                         data-desc="Weite, Ruhe und Geschichte. Dieser liebevoll sanierte Gutshof bietet enorme Entfaltungsmöglichkeiten auf einem weitläufigen Areal. Ob als Mehrgenerationenhaus oder exklusiver Rückzugsort – hier werden Träume wahr.">
                         <div class="property-img">
@@ -475,13 +487,46 @@
                         style="margin: 0 10px; color: var(--color-accent);">Datenschutz</a></p>
             </div>
 
-            <!-- WhatsApp Button -->
-            <a href="https://wa.me/15566284478" target="_blank" class="whatsapp-float">
-                <i class="fab fa-whatsapp"></i>
-            </a>
+
 
             <!-- Filter Logic Script -->
             <script>
+                function applyFilters() {
+                    const type = document.getElementById('filter-type').value;
+                    const category = document.getElementById('filter-category').value;
+                    const location = document.getElementById('filter-search').value.toLowerCase();
+                    const price = document.getElementById('filter-price').value;
+
+                    const cards = document.querySelectorAll('.property-card');
+                    let visibleCount = 0;
+
+                    cards.forEach(card => {
+                        const cardType = card.getAttribute('data-type');
+                        const cardCategory = card.getAttribute('data-category');
+                        const cardLocation = card.getAttribute('data-location').toLowerCase();
+                        const cardPrice = parseInt(card.getAttribute('data-price-val'));
+
+                        let isVisible = true;
+
+                        if (type !== 'alle' && cardType !== type) isVisible = false;
+                        if (category !== 'alle' && cardCategory !== category) isVisible = false;
+                        if (location && !cardLocation.includes(location)) isVisible = false;
+                        if (price !== 'any' && cardPrice > parseInt(price)) isVisible = false;
+
+                        if (isVisible) {
+                            card.style.display = 'block';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Update UI
+                    document.getElementById('result-count').innerText = `${visibleCount} Immobilien gefunden`;
+                    document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+                    document.getElementById('property-grid').style.display = visibleCount === 0 ? 'none' : 'grid';
+                }
+
                 window.addEventListener('DOMContentLoaded', (event) => {
                     const urlParams = new URLSearchParams(window.location.search);
 
@@ -493,15 +538,13 @@
                     if (type) document.getElementById('filter-type').value = type;
                     if (location) document.getElementById('filter-search').value = location;
                     if (price) document.getElementById('filter-price').value = price;
+                    if (category) document.getElementById('filter-category').value = category;
 
-                    // Note: In a real app, 'category' would trigger a data filter here
-                    if (category) {
-                        console.log("Filtering for category:", category);
-                    }
+                    applyFilters();
                 });
 
                 document.getElementById('filter-submit-btn').addEventListener('click', function () {
-                    alert("Filter werden angewendet... (Backend-Anbindung erforderlich)");
+                    applyFilters();
                 });
 
                 // Modal Logic
@@ -541,7 +584,23 @@
                         document.body.style.overflow = 'auto';
                     }
                 });
+
+                // Sticky Scroll Logic
+                const filterSection = document.querySelector('.filter-header');
+                const filterWrapper = document.querySelector('.filter-wrapper');
+                
+                if (filterSection && filterWrapper) {
+                    const stickyOffset = filterWrapper.offsetTop;
+
+                    window.addEventListener('scroll', () => {
+                        if (window.pageYOffset >= stickyOffset - 110) {
+                            filterSection.classList.add('is-sticky');
+                        } else {
+                            filterSection.classList.remove('is-sticky');
+                        }
+                    });
+                }
             </script>
 </body>
 
-</html>
+```
