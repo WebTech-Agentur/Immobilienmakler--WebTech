@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum | Velaris Homes</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
@@ -67,11 +63,23 @@
             color: var(--color-accent);
             margin-top: 5px;
         }
+
+        .disclaimer-section h4 {
+            color: var(--color-accent);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+
+        .disclaimer-section p {
+            line-height: 1.7;
+            color: var(--color-text-muted);
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header (Floating Design) -->
     <header class="header">
         <div class="header-box">
             <a href="index.html" class="logo">Velaris<span>Homes</span></a>
@@ -157,12 +165,30 @@
                 </div>
             </div>
 
+            <!-- Disclaimer Column -->
+            <div class="legal-card disclaimer-section" style="margin-bottom: 60px;">
+                <h2 style="color: var(--color-primary);">Disclaimer – Rechtliche Hinweise</h2>
+                
+                <h4>§ 1 Warnhinweis zu Inhalten</h4>
+                <p>Die kostenlosen und frei zugänglichen Inhalte dieser Webseite wurden mit größtmöglicher Sorgfalt erstellt. Der Anbieter dieser Webseite übernimmt jedoch keine Gewähr für die Richtigkeit und Aktualität der bereitgestellten kostenlosen und frei zugänglichen journalistischen Ratgeber und Nachrichten.</p>
+
+                <h4>§ 2 Externe Links</h4>
+                <p>Diese Website enthält Verknüpfungen zu Websites Dritter („externe Links"). Diese Websites unterliegen der Haftung der jeweiligen Betreiber. Der Anbieter hat bei der erstmaligen Verknüpfung der externen Links die fremden Inhalte daraufhin überprüft, ob etwaige Rechtsverstöße bestehen.</p>
+
+                <h4>§ 3 Urheber- und Leistungsschutzrechte</h4>
+                <p>Die auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheber- und Leistungsschutzrecht. Jede vom deutschen Urheber- und Leistungsschutzrecht nicht zugelassene Verwertung bedarf der vorherigen schriftlichen Zustimmung des Anbieters oder jeweiligen Rechteinhabers.</p>
+                
+                <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6; font-style: italic; border-top: 1px solid var(--color-gray); padding-top: 15px;">
+                    Hinweis: Diese Website ist ein Demoprojekt und wurde ausschließlich zu Präsentationszwecken erstellt.
+                </p>
+            </div>
+
             <div style="padding: 50px; background-color: var(--color-primary); border-radius: var(--radius-lg); color: white; box-shadow: 0 20px 50px rgba(15, 76, 92, 0.2);">
                 <div style="max-width: 800px;">
                     <h2 style="color: white; margin-bottom: 25px;">Streitschlichtung</h2>
                     <p style="opacity: 0.8; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.8;">
-                        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie unter 
-                        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" style="color: var(--color-accent); text-decoration: underline;">https://ec.europa.eu/consumers/odr/</a> finden. 
+                        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit unter 
+                        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" style="color: var(--color-accent); text-decoration: underline;">https://ec.europa.eu/consumers/odr/</a>. 
                         Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder verpflichtet noch bereit.
                     </p>
                     <a href="kontakt.html" class="btn btn-outline" style="border-color: white; color: white;">Fragen? Kontaktieren Sie uns</a>
@@ -171,7 +197,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
