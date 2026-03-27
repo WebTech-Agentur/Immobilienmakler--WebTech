@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,248 +9,174 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
     <style>
-        .legal-hero {
-            background: linear-gradient(rgba(15, 76, 92, 0.9), rgba(15, 76, 92, 0.95)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            padding: 160px 0 100px;
-            text-align: center;
-            color: white;
-        }
-
         .legal-card {
-            background: white;
-            border-radius: var(--radius-lg);
+            background: var(--color-secondary);
+            border: 1px solid var(--glass-border);
             padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.03);
-            height: 100%;
-            transition: var(--transition);
+            border-radius: 30px;
+            transition: var(--transition-smooth);
         }
 
         .legal-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            border-color: var(--color-accent);
         }
 
-        .legal-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(212, 163, 115, 0.1);
+        .legal-label {
             color: var(--color-accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-        }
-
-        .legal-info-item {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .legal-info-item i {
-            color: var(--color-accent);
-            margin-top: 5px;
-        }
-
-        .disclaimer-section h4 {
-            color: var(--color-accent);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            margin-top: 30px;
-        }
-
-        .disclaimer-section p {
-            line-height: 1.7;
-            color: var(--color-text-muted);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 700;
             margin-bottom: 20px;
+            display: block;
+        }
+
+        .legal-text {
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+
+        .legal-title {
+            color: var(--color-white);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Header -->
+    <!-- Premium Header -->
     <header class="header">
-        <div class="header-box">
-            <a href="index.html" class="logo">Velaris<span>Homes</span></a>
-            <div class="hamburger"><span></span><span></span><span></span></div>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">VELARIS<span>HOMES</span></a>
+            
             <nav class="nav">
-                <a href="index.html">Startseite</a>
-                <a href="immobilien.html">Immobilien</a>
-                <a href="ueber-uns.html">Über uns</a>
-                <a href="leistungen.html">Leistungen</a>
-                <a href="kontakt.html">Kontakt</a>
+                <a href="index.html" class="nav-link">Residenzen</a>
+                <a href="immobilien.html" class="nav-link">Portfolio</a>
+                <a href="ueber-uns.html" class="nav-link">Expertise</a>
+                <a href="leistungen.html" class="nav-link">Services</a>
+                <a href="kontakt.html" class="nav-link">Verbindung</a>
             </nav>
-            <div class="actions">
-                <a href="kontakt.html" class="cta">Besichtigung</a>
+
+            <div class="header-actions">
+                <a href="kontakt.html" class="btn btn-outline" style="padding: 12px 28px;">Besichtigung anfragen</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
 
-    <section class="legal-hero">
-        <div class="container fade-in">
-            <span class="intro-subtitle" style="color: var(--color-accent);">Rechtliches</span>
-            <h1 style="color: white; font-size: 3.5rem;">Impressum</h1>
+    <!-- Header Section -->
+    <section style="padding-top: 180px; padding-bottom: 80px;">
+        <div class="container">
+            <span class="hero-subtitle">Rechtliches</span>
+            <h1 class="title-lg gradient-text">Impressum</h1>
         </div>
     </section>
 
-    <main style="padding: 100px 0;">
-        <div class="container fade-in">
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 60px;">
-                <!-- Company Info -->
+    <!-- Content Section -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div class="grid-3" style="margin-bottom: 60px;">
                 <div class="legal-card">
-                    <div class="legal-icon"><i class="fas fa-building"></i></div>
-                    <h3>Unternehmen</h3>
-                    <p style="margin-top: 15px; font-weight: 700; font-size: 1.1rem;">Velaris Homes Immobilien GmbH</p>
-                    <div style="margin-top: 20px;">
-                        <div class="legal-info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</span>
-                        </div>
-                        <div class="legal-info-item">
-                            <i class="fas fa-user-tie"></i>
-                            <span>Maximilian Huber<br>(Geschäftsführer)</span>
-                        </div>
-                    </div>
+                    <span class="legal-label">Angaben gemäß § 5 TMG</span>
+                    <h2 class="legal-title">Unternehmen</h2>
+                    <p class="legal-text">
+                        Velaris Homes Immobilien GmbH<br>
+                        Max-Eyth-Straße 681<br>
+                        89415 Lauingen (Donau)
+                    </p>
                 </div>
-
-                <!-- Contact Info -->
                 <div class="legal-card">
-                    <div class="legal-icon"><i class="fas fa-paper-plane"></i></div>
-                    <h3>Kontakt</h3>
-                    <div style="margin-top: 20px;">
-                        <div class="legal-info-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+49 15566284478</span>
-                        </div>
-                        <div class="legal-info-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>anfrage@velaris-homes.de</span>
-                        </div>
-                        <div class="legal-info-item">
-                            <i class="fas fa-globe"></i>
-                            <span>www.velarishomes.de</span>
-                        </div>
-                    </div>
+                    <span class="legal-label">Vertretung</span>
+                    <h2 class="legal-title">Geschäftsführung</h2>
+                    <p class="legal-text">
+                        Maximilian Huber<br>
+                        Eingetragen beim Amtsgericht Augsburg<br>
+                        HRB 123456
+                    </p>
                 </div>
-
-                <!-- Register Info -->
                 <div class="legal-card">
-                    <div class="legal-icon"><i class="fas fa-file-contract"></i></div>
-                    <h3>Register & Steuern</h3>
-                    <div style="margin-top: 20px;">
-                        <div class="legal-info-item">
-                            <i class="fas fa-id-card"></i>
-                            <span>Augsburg HRB 123456</span>
-                        </div>
-                        <div class="legal-info-item">
-                            <i class="fas fa-percentage"></i>
-                            <span>St.-Nr: DE 987654321</span>
-                        </div>
-                        <div class="legal-info-item">
-                            <i class="fas fa-gavel"></i>
-                            <span>Aufsicht: IHK München<br>§ 34c GewO</span>
-                        </div>
-                    </div>
+                    <span class="legal-label">Kontakt</span>
+                    <h2 class="legal-title">Direkt</h2>
+                    <p class="legal-text">
+                        Telefon: +49 15566284478<br>
+                        E-Mail: anfrage@velaris-homes.de<br>
+                        Web: www.velaris-homes.de
+                    </p>
                 </div>
             </div>
 
-            <!-- Disclaimer Column -->
-            <div class="legal-card disclaimer-section" style="margin-bottom: 60px;">
-                <h2 style="color: var(--color-primary);">Disclaimer – Rechtliche Hinweise</h2>
-                
-                <h4>§ 1 Warnhinweis zu Inhalten</h4>
-                <p>Die kostenlosen und frei zugänglichen Inhalte dieser Webseite wurden mit größtmöglicher Sorgfalt erstellt. Der Anbieter dieser Webseite übernimmt jedoch keine Gewähr für die Richtigkeit und Aktualität der bereitgestellten kostenlosen und frei zugänglichen journalistischen Ratgeber und Nachrichten.</p>
-
-                <h4>§ 2 Externe Links</h4>
-                <p>Diese Website enthält Verknüpfungen zu Websites Dritter („externe Links"). Diese Websites unterliegen der Haftung der jeweiligen Betreiber. Der Anbieter hat bei der erstmaligen Verknüpfung der externen Links die fremden Inhalte daraufhin überprüft, ob etwaige Rechtsverstöße bestehen.</p>
-
-                <h4>§ 3 Urheber- und Leistungsschutzrechte</h4>
-                <p>Die auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheber- und Leistungsschutzrecht. Jede vom deutschen Urheber- und Leistungsschutzrecht nicht zugelassene Verwertung bedarf der vorherigen schriftlichen Zustimmung des Anbieters oder jeweiligen Rechteinhabers.</p>
-                
-                <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6; font-style: italic; border-top: 1px solid var(--color-gray); padding-top: 15px;">
-                    Hinweis: Diese Website ist ein Demoprojekt und wurde ausschließlich zu Präsentationszwecken erstellt.
+            <div class="legal-card" style="margin-bottom: 40px;">
+                <h2 class="legal-title">Haftung für Inhalte</h2>
+                <p class="legal-text">
+                    Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
                 </p>
             </div>
-
-            <div style="padding: 50px; background-color: var(--color-primary); border-radius: var(--radius-lg); color: white; box-shadow: 0 20px 50px rgba(15, 76, 92, 0.2);">
-                <div style="max-width: 800px;">
-                    <h2 style="color: white; margin-bottom: 25px;">Streitschlichtung</h2>
-                    <p style="opacity: 0.8; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.8;">
-                        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit unter 
-                        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" style="color: var(--color-accent); text-decoration: underline;">https://ec.europa.eu/consumers/odr/</a>. 
-                        Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder verpflichtet noch bereit.
-                    </p>
-                    <a href="kontakt.html" class="btn btn-outline" style="border-color: white; color: white;">Fragen? Kontaktieren Sie uns</a>
-                </div>
-            </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="index.html" class="logo"
-                        style="color: white; font-size: 2rem; display: block; margin-bottom: 30px;">Velaris<span>Homes</span></a>
-                    <p>Ihre Experten für exklusive Immobilienvermittlung. Seit über 20 Jahren verbinden wir Luxus mit
-                        Transparenz und Professionalität.</p>
+                    <a href="index.html" class="logo footer-logo">VELARIS<span>HOMES</span></a>
+                    <p class="footer-desc">Ihre erste Adresse für Premium-Immobilien und professionelle Vermittlung. Wir begleiten Sie von der ersten Vision bis zur Schlüsselübergabe.</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Menü</h3>
-                    <div class="footer-links">
-                        <a href="index.html">Startseite</a>
-                        <a href="immobilien.html">Immobilien</a>
-                        <a href="ueber-uns.html">Über uns</a>
-                        <a href="leistungen.html">Leistungen</a>
-                        <a href="kontakt.html">Kontakt</a>
+                    <h4 class="footer-title">Portfolio</h4>
+                    <ul class="footer-links">
+                        <li><a href="immobilien.html">Design Villen</a></li>
+                        <li><a href="immobilien.html">Crown Penthouses</a></li>
+                        <li><a href="immobilien.html">Modern Lofts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Expertise</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über Velaris</a></li>
+                        <li><a href="leistungen.html">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">In Kontakt bleiben</h4>
+                    <p class="footer-desc">Abonnieren Sie unseren kuratierten Newsletter für exklusive Off-Market Angebote.</p>
+                    <div class="newsletter-box">
+                        <input type="email" placeholder="E-Mail Adresse">
+                        <button><i class="fas fa-paper-plane"></i></button>
                     </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <div class="footer-links">
-                        <a href="#">Kaufen</a>
-                        <a href="#">Verkaufen</a>
-                        <a href="#">Mieten</a>
-                        <a href="#">Wertermittlung</a>
-                        <a href="#">Finanzierung</a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Kontakt</h3>
-                    <p><i class="fas fa-map-marker-alt" style="margin-right: 15px; color: var(--color-accent);"></i>
-                        Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
-                    <p><i class="fas fa-phone" style="margin-right: 15px; color: var(--color-accent);"></i> +49 15566284478</p>
-                    <p><i class="fas fa-envelope" style="margin-right: 15px; color: var(--color-accent);"></i> anfrage@velaris-homes.de</p>
                 </div>
             </div>
-            <div
-                style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; opacity: 0.5; font-size: 0.85rem;">
-                <p>&copy; 2026 Velaris Homes Immobilien | <a href="impressum.html"
-                        style="margin: 0 10px; color: var(--color-accent);">Impressum</a> | <a href="datenschutz.html"
-                        style="margin: 0 10px; color: var(--color-accent);">Datenschutz</a></p>
+            
+            <div style="border-top: 1px solid var(--glass-border); padding-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 13px;">
+                <p>&copy; 2026 VELARIS HOMES | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
             </div>
         </div>
     </footer>
 
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    </script>
     <script src="js/navigation.js"></script>
 </body>
+
 </html>

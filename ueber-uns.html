@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Über uns | Velaris Homes</title>
+    <title>Expertise & Geschichte | Velaris Homes</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -19,235 +19,298 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
     <style>
-        .page-banner {
-            height: 400px;
-            background: linear-gradient(rgba(15, 76, 92, 0.7), rgba(15, 76, 92, 0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1073&auto=format&fit=crop') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding-top: 90px;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 40px;
+        .story-image {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
         }
 
         .team-card {
-            background: white;
-            border-radius: var(--radius-lg);
+            background: var(--color-secondary);
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            text-align: center;
-            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-smooth);
         }
 
         .team-card:hover {
+            border-color: var(--color-accent);
             transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
         }
 
-        .team-img {
-            height: 350px;
+        .team-image-box {
+            height: 400px;
             overflow: hidden;
+            position: relative;
         }
 
-        .team-img img {
+        .team-image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition-smooth);
         }
 
-        .team-info {
-            padding: 25px;
+        .team-card:hover .team-image-box img {
+            transform: scale(1.05);
         }
 
-        .value-card {
-            padding: 40px;
-            background: var(--color-gray-light);
-            border-radius: var(--radius-lg);
+        .team-details {
+            padding: 30px;
             text-align: center;
-            border: 1px solid var(--color-gray);
         }
 
-        .value-card i {
+        .team-role {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .value-item {
+            padding: 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .value-item:hover {
+            border-color: var(--color-accent);
+            background: rgba(197, 160, 89, 0.05);
+        }
+
+        .value-icon {
             font-size: 2.5rem;
             color: var(--color-accent);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header (Floating Design) -->
+    <!-- Premium Header -->
     <header class="header">
-        <div class="header-box">
-            <a href="index.html" class="logo">Velaris<span>Homes</span></a>
-            <div class="hamburger"><span></span><span></span><span></span></div>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">VELARIS<span>HOMES</span></a>
+
             <nav class="nav">
-                <a href="index.html">Startseite</a>
-                <a href="immobilien.html">Immobilien</a>
-                <a href="ueber-uns.html" class="active">Über uns</a>
-                <a href="leistungen.html">Leistungen</a>
-                <a href="kontakt.html">Kontakt</a>
+                <a href="index.html" class="nav-link">Residenzen</a>
+                <a href="immobilien.html" class="nav-link">Portfolio</a>
+                <a href="ueber-uns.html" class="nav-link active">Expertise</a>
+                <a href="leistungen.html" class="nav-link">Services</a>
+                <a href="kontakt.html" class="nav-link">Verbindung</a>
+
+                <div class="nav-footer">
+                    <a href="index.html" class="logo footer-logo">VELARIS<span>HOMES</span></a>
+                    <p class="footer-desc">Ihre erste Adresse für Premium-Immobilien und professionelle Vermittlung. Wir begleiten Sie von der ersten Vision bis zur Schlüsselübergabe.</p>
+                    
+                    <h4 class="footer-title">Portfolio</h4>
+                    <ul class="footer-links">
+                        <li><a href="immobilien.html">Design Villen</a></li>
+                        <li><a href="immobilien.html">Crown Penthouses</a></li>
+                        <li><a href="immobilien.html">Modern Lofts</a></li>
+                        <li><a href="immobilien.html">Historische Estates</a></li>
+                    </ul>
+                
+                    <h4 class="footer-title">Expertise</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über Velaris</a></li>
+                        <li><a href="ueber-uns.html">Unsere Werte</a></li>
+                        <li><a href="ueber-uns.html">Netzwerk</a></li>
+                        <li><a href="ueber-uns.html">Referenzen</a></li>
+                    </ul>
+                
+                    <h4 class="footer-title">In Kontakt bleiben</h4>
+                    <p class="footer-desc">Abonnieren Sie unseren Newsletter für exklusive Angebote.</p>
+                    <div class="newsletter-box">
+                        <input type="email" placeholder="E-Mail Adresse">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
             </nav>
-            <div class="actions">
-                <a href="kontakt.html" class="cta">Besichtigung</a>
+
+            <div class="header-actions">
+                <a href="kontakt.html" class="btn btn-outline" style="padding: 12px 28px;">Besichtigung anfragen</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <header class="page-banner">
-        <div class="container fade-in">
-            <h1 style="color: white; font-size: 3.5rem;">Unsere Geschichte</h1>
-            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">Vertrauen, Professionalität
-                und Exzellenz seit über 20 Jahren.</p>
-        </div>
-    </header>
-
-    <!-- Story Section -->
-    <section class="section-padding intro-section" style="background: white;">
-        <div class="container">
-            <div class="intro-grid">
-                <div class="fade-in">
-                    <span class="intro-subtitle">Unsere Vision</span>
-                    <h2 class="intro-title">Die Verbindung von Tradition und Innovation.</h2>
-
-                    <p class="intro-text" style="margin-bottom: 30px; font-size: 1.05rem;">
-                        Velaris Homes wurde mit einer klaren Vision gegründet: Die Vermittlung von Premium-Immobilien
-                        auf ein neues Level an Service und Diskretion zu heben. Was als kleines Familienunternehmen in
-                        Berlin begann, hat sich zu einem der führenden Netzwerke für exklusive Wohnobjekte entwickelt.
-                    </p>
-
-                    <div
-                        style="background: rgba(15, 76, 92, 0.05); padding: 30px; border-left: 4px solid var(--color-accent); border-radius: 0 15px 15px 0; margin-bottom: 35px;">
-                        <p
-                            style="font-size: 1.2rem; font-family: var(--font-heading); font-weight: 600; color: var(--color-primary); line-height: 1.5;">
-                            "Wir glauben nicht an Massenabfertigung. Für uns ist jede Immobilie ein Unikat und jeder
-                            Kunde ein Partner."
-                        </p>
+    <!-- Header Section -->
+    <section class="expertise-hero">
+        <div class="container hero-split">
+            <div class="hero-left">
+                <span class="hero-subtitle">Unsere Expertise</span>
+                <h1 class="title-lg gradient-text">Zwei Jahrzehnte<br>diskrete Vermittlung.</h1>
+                <div class="expertise-stats" style="display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+                    <div class="stat-mini">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--color-accent);">20+</div>
+                        <div
+                            style="text-transform: uppercase; font-size: 11px; letter-spacing: 1px; color: var(--color-text-muted);">
+                            Jahre</div>
                     </div>
-
-                    <p class="intro-text">
-                        Mit modernster Technologie und einem tief verwurzelten Verständnis für den traditionellen
-                        Maklerberuf schaffen wir Werte, die bleiben. Unser Anspruch ist es, nicht nur Transaktionen
-                        abzuwickeln, sondern Lebensräume zu vermitteln.
-                    </p>
+                    <div class="stat-mini">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--color-accent);">1.5 Mrd.</div>
+                        <div
+                            style="text-transform: uppercase; font-size: 11px; letter-spacing: 1px; color: var(--color-text-muted);">
+                            Transaktionen</div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="intro-image-wrapper fade-in">
-                    <div class="intro-image-decor"></div>
-                    <img src="https://images.unsplash.com/photo-1566267162796-2ad02b00d9cb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Luxus Office Velaris Homes" class="intro-image-main">
-                    <div class="experience-badge">
-                        <span class="num">2005</span>
-                        <span class="txt">Seit Jahren am Markt</span>
+            <div class="hero-right">
+                <div class="expertise-radar-container" id="radar-trigger">
+                    <div class="radar-pings">
+                        <div class="ping ping-1"></div>
+                        <div class="ping ping-2"></div>
+                        <div class="ping ping-3"></div>
                     </div>
+                    <div class="radar-orb" id="radar-orb">
+                        <span>EST. 2005</span>
+                    </div>
+                    <!-- Particle nodes -->
+                    <div class="radar-node node-1"></div>
+                    <div class="radar-node node-2"></div>
+                    <div class="radar-node node-3"></div>
+                    <div class="radar-node node-4"></div>
+                    <div class="radar-node node-5"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Values -->
-    <section class="section-padding" style="background-color: var(--color-bg-section); color: var(--color-text-dark);">
+    <!-- Story Section -->
+    <section style="padding-top: 0;">
         <div class="container">
-            <div class="section-title-wrap">
-                <span class="intro-subtitle">Unsere Prinzipien</span>
-                <h2 class="intro-title mobile-title-small">Werte, die uns leiten</h2>
+            <div class="grid-2" style="align-items: center;">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1073&auto=format&fit=crop"
+                        alt="Premium Office" class="story-image">
+                </div>
+                <div>
+                    <h2 class="title-md" style="margin-bottom: 30px;">Mehr als ein Maklerhaus. <br>Ein Partner fürs
+                        Leben.</h2>
+                    <p
+                        style="color: var(--color-text-muted); line-height: 1.8; font-size: 1.1rem; margin-bottom: 30px;">
+                        Velaris Homes wurde 2005 mit dem Anspruch gegründet, den Immobilienmarkt durch kompromisslose
+                        Qualität und absolute Diskretion zu bereichern. Unser Fokus liegt nicht auf der Quantität der
+                        Objekte, sondern auf der Exklusivität der Erfahrung.
+                    </p>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 1.1rem;">
+                        Wir verstehen, dass eine Immobilie mehr ist als nur Quadratmeter. Es ist ein Ausdruck von
+                        Persönlichkeit und ein Rückzugsort. Daher begleiten wir unsere Kunden mit einem Team aus
+                        spezialisierten Experten, die jeden Aspekt der Premium-Vermittlung beherrschen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section style="background: var(--color-secondary);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 80px;">
+                <span class="hero-subtitle">Prinzipien</span>
+                <h2 class="title-lg">Werte, die uns leiten</h2>
             </div>
 
-            <div class="values-grid">
-                <div class="value-card fade-in"
-                    style="background: white; color: var(--color-text-dark); border-color: rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-                    <i class="fas fa-eye"
-                        style="font-size: 2.5rem; color: var(--color-accent); margin-bottom: 25px;"></i>
-                    <h3 style="color: var(--color-primary); margin-bottom: 15px;">Transparenz</h3>
-                    <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6;">Offene
-                        Kommunikation und ehrliche Beratung in jedem Schritt des Prozesses.</p>
+            <div class="grid-3">
+                <div class="value-card">
+                    <div class="value-image-box">
+                        <img src="https://images.unsplash.com/photo-1622015663319-e97e697503ee?q=80&w=1000&auto=format&fit=crop"
+                            alt="Diskretion">
+                    </div>
+                    <div class="value-content" style="padding: 30px;">
+                        <h3 style="margin-bottom: 20px;">Absolute Diskretion</h3>
+                        <p style="color: var(--color-text-muted);">Off-Market Vermarktung ist unsere Spezialität. Der
+                            Schutz Ihrer Privatsphäre steht an erster Stelle.</p>
+                    </div>
                 </div>
-                <div class="value-card fade-in"
-                    style="background: white; color: var(--color-text-dark); border-color: rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition-delay: 0.1s;">
-                    <i class="fas fa-award"
-                        style="font-size: 2.5rem; color: var(--color-accent); margin-bottom: 25px;"></i>
-                    <h3 style="color: var(--color-primary); margin-bottom: 15px;">Exzellenz</h3>
-                    <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6;">Höchste Standards
-                        in der Vermarktung und Abwicklung Ihrer Immobilie.</p>
+                <div class="value-card">
+                    <div class="value-image-box">
+                        <img src="css/Screenshot 2026-03-27 100221.png" alt="Präzision">
+                    </div>
+                    <div class="value-content" style="padding: 30px;">
+                        <h3 style="margin-bottom: 20px;">Höchste Präzision</h3>
+                        <p style="color: var(--color-text-muted);">Von der Wertermittlung bis zum Notartermin – wir
+                            arbeiten mit maximaler Sorgfalt.</p>
+                    </div>
                 </div>
-                <div class="value-card fade-in"
-                    style="background: white; color: var(--color-text-dark); border-color: rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition-delay: 0.2s;">
-                    <i class="fas fa-lightbulb"
-                        style="font-size: 2.5rem; color: var(--color-accent); margin-bottom: 25px;"></i>
-                    <h3 style="color: var(--color-primary); margin-bottom: 15px;">Innovation</h3>
-                    <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6;">Einsatz modernster
-                        Tools wie 360°-Rundgänge und KI-Marktanalysen.</p>
+                <div class="value-card">
+                    <div class="value-image-box">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000&auto=format&fit=crop"
+                            alt="Netzwerk">
+                    </div>
+                    <div class="value-content" style="padding: 30px;">
+                        <h3 style="margin-bottom: 20px;">Exklusives Netzwerk</h3>
+                        <p style="color: var(--color-text-muted);">Zugang zu erstklassigen Finanzierungspartnern,
+                            Architekten und handverlesenen Käufern.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section class="section-padding">
+    <section>
         <div class="container">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h4 style="color: var(--color-accent); text-transform: uppercase;">Experten</h4>
-                <h2 style="font-size: 2.8rem;">Das Team hinter Ihrem Erfolg</h2>
+            <div style="text-align: center; margin-bottom: 80px;">
+                <span class="hero-subtitle">Experten</span>
+                <h2 class="title-lg">Das Team hinter Velaris</h2>
             </div>
 
-            <div class="team-grid">
+            <div class="grid-3">
                 <!-- Member 1 -->
-                <div class="team-card fade-in">
-                    <div class="team-img">
-                        <img src="https://images.unsplash.com/photo-1618568949779-895d81686151?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                <div class="team-card">
+                    <div class="team-image-box">
+                        <img src="https://images.unsplash.com/photo-1618568949779-895d81686151?q=80&w=1171&auto=format&fit=crop"
                             alt="Maximilian Huber">
                     </div>
-                    <div class="team-info">
-                        <h3 style="margin-bottom: 5px;">Maximilian Huber</h3>
-                        <p
-                            style="color: var(--color-accent); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 15px;">
-                            Gründer & CEO</p>
-                        <p style="color: var(--color-text-muted); font-size: 0.9rem;">Über 25 Jahre Erfahrung im
-                            Luxus-Segment.</p>
+                    <div class="team-details">
+                        <span class="team-role">Gründer & CEO</span>
+                        <h3 class="property-name" style="font-size: 1.5rem; margin-bottom: 10px;">Maximilian Huber</h3>
+                        <p style="color: var(--color-text-muted); font-size: 14px;">Strategie & Internationales
+                            Portfolio</p>
                     </div>
                 </div>
 
                 <!-- Member 2 -->
-                <div class="team-card fade-in" style="transition-delay: 0.1s;">
-                    <div class="team-img">
-                        <img src="https://images.unsplash.com/photo-1758598306980-c47a94c6708c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                <div class="team-card">
+                    <div class="team-image-box">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1000&auto=format&fit=crop"
                             alt="Sarah Schmidt">
                     </div>
-                    <div class="team-info">
-                        <h3 style="margin-bottom: 5px;">Sarah Schmidt</h3>
-                        <p
-                            style="color: var(--color-accent); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 15px;">
-                            Leitung Vermietung</p>
-                        <p style="color: var(--color-text-muted); font-size: 0.9rem;">Ihre Expertin für exklusive
-                            Wohnimmobilien.</p>
+                    <div class="team-details">
+                        <span class="team-role">Head of Sales</span>
+                        <h3 class="property-name" style="font-size: 1.5rem; margin-bottom: 10px;">Sarah Schmidt</h3>
+                        <p style="color: var(--color-text-muted); font-size: 14px;">Residenzen & Neubauprojekte</p>
                     </div>
                 </div>
 
                 <!-- Member 3 -->
-                <div class="team-card fade-in" style="transition-delay: 0.2s;">
-                    <div class="team-img">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop"
+                <div class="team-card">
+                    <div class="team-image-box">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop"
                             alt="Julian Meyer">
                     </div>
-                    <div class="team-info">
-                        <h3 style="margin-bottom: 5px;">Julian Meyer</h3>
-                        <p
-                            style="color: var(--color-accent); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 15px;">
-                            Senior Makler</p>
-                        <p style="color: var(--color-text-muted); font-size: 0.9rem;">Spezialist für Investment-Objekte.
-                        </p>
+                    <div class="team-details">
+                        <span class="team-role">Senior Advisor</span>
+                        <h3 class="property-name" style="font-size: 1.5rem; margin-bottom: 10px;">Julian Meyer</h3>
+                        <p style="color: var(--color-text-muted); font-size: 14px;">Bewertung & Marktanalysen</p>
                     </div>
                 </div>
             </div>
@@ -259,48 +322,83 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="index.html" class="logo"
-                        style="color: white; font-size: 2rem; display: block; margin-bottom: 30px;">Velaris<span>Homes</span></a>
-                    <p>Ihre Experten für exklusive Immobilienvermittlung. Seit über 20 Jahren verbinden wir Luxus mit
-                        Transparenz und Professionalität.</p>
+                    <a href="index.html" class="logo footer-logo">VELARIS<span>HOMES</span></a>
+                    <p class="footer-desc">Ihre erste Adresse für Premium-Immobilien und professionelle Vermittlung. Wir
+                        begleiten Sie von der ersten Vision bis zur Schlüsselübergabe.</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Menü</h3>
-                    <div class="footer-links">
-                        <a href="index.html">Startseite</a>
-                        <a href="immobilien.html">Immobilien</a>
-                        <a href="ueber-uns.html">Über uns</a>
-                        <a href="leistungen.html">Leistungen</a>
-                        <a href="kontakt.html">Kontakt</a>
+                    <h4 class="footer-title">Portfolio</h4>
+                    <ul class="footer-links">
+                        <li><a href="immobilien.html">Design Villen</a></li>
+                        <li><a href="immobilien.html">Crown Penthouses</a></li>
+                        <li><a href="immobilien.html">Modern Lofts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Expertise</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über Velaris</a></li>
+                        <li><a href="leistungen.html">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">In Kontakt bleiben</h4>
+                    <p class="footer-desc">Abonnieren Sie unseren kuratierten Newsletter für exklusive Off-Market
+                        Angebote.</p>
+                    <div class="newsletter-box">
+                        <input type="email" placeholder="E-Mail Adresse">
+                        <button><i class="fas fa-paper-plane"></i></button>
                     </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <div class="footer-links">
-                        <a href="#">Kaufen</a>
-                        <a href="#">Verkaufen</a>
-                        <a href="#">Mieten</a>
-                        <a href="#">Wertermittlung</a>
-                        <a href="#">Finanzierung</a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Kontakt</h3>
-                    <p><i class="fas fa-map-marker-alt" style="margin-right: 15px; color: var(--color-accent);"></i>
-                        Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
-                    <p><i class="fas fa-phone" style="margin-right: 15px; color: var(--color-accent);"></i> +49 15566284478</p>
-                    <p><i class="fas fa-envelope" style="margin-right: 15px; color: var(--color-accent);"></i> anfrage@velaris-homes.de</p>
                 </div>
             </div>
+
             <div
-                style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; opacity: 0.5; font-size: 0.85rem;">
-                <p>&copy; 2026 Velaris Homes Immobilien | <a href="impressum.html"
-                        style="margin: 0 10px; color: var(--color-accent);">Impressum</a> | <a href="datenschutz.html"
-                        style="margin: 0 10px; color: var(--color-accent);">Datenschutz</a></p>
+                style="border-top: 1px solid var(--glass-border); padding-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 13px;">
+                <p>&copy; 2026 VELARIS HOMES | <a href="impressum.html">Impressum</a> | <a
+                        href="datenschutz.html">Datenschutz</a></p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script>
+        // Radar Interaction
+        const radarTrigger = document.getElementById('radar-trigger');
+        const radarOrb = document.getElementById('radar-orb');
+        const nodes = document.querySelectorAll('.radar-node');
+
+        if (radarTrigger && radarOrb) {
+            radarTrigger.addEventListener('mousemove', (e) => {
+                const rect = radarTrigger.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const moveX = (x - centerX) / 10;
+                const moveY = (y - centerY) / 10;
+                radarOrb.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
+                nodes.forEach((node, i) => {
+                    const pullX = (x - centerX) / (15 + i * 5);
+                    const pullY = (y - centerY) / (15 + i * 5);
+                    node.style.transform = `translate(${pullX}px, ${pullY}px)`;
+                });
+            });
+
+            radarTrigger.addEventListener('mouseleave', () => {
+                radarOrb.style.transform = `translate(0, 0)`;
+                nodes.forEach(node => node.style.transform = `translate(0, 0)`);
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    </script>
     <script src="js/navigation.js"></script>
 </body>
 

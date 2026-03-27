@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt | Velaris Homes</title>
-
+    <title>Kontakt & Verbindung | Velaris Homes</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,212 +17,241 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
     <style>
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 80px;
+        .contact-form-container {
+            background: var(--color-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: var(--glass-shadow);
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .form-group label {
             display: block;
-            font-weight: 700;
-            color: var(--color-dark);
-            margin-bottom: 10px;
-            font-size: 0.9rem;
+            font-size: 11px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-bottom: 12px;
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
-            padding: 18px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--color-primary);
-            background: white;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 18px 24px;
+            border-radius: 12px;
+            color: white;
+            font-family: var(--font-body);
+            font-size: 16px;
             outline: none;
-            transition: var(--transition);
+            transition: var(--transition-fast);
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group input:focus, .form-group textarea:focus {
             border-color: var(--color-accent);
-            background: white;
-            box-shadow: 0 0 0 4px rgba(200, 169, 106, 0.1);
+            background: rgba(255,255,255,0.05);
         }
 
-        .map-wrapper {
-            height: 450px;
-            border-radius: var(--radius-lg);
+        .contact-info-item {
+            margin-bottom: 50px;
+        }
+
+        .info-label {
+            color: var(--color-accent);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .info-value {
+            font-size: 1.4rem;
+            color: var(--color-white);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .map-section {
+            height: 500px;
+            margin-top: 100px;
+            border-radius: 40px;
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--color-gray);
+            border: 1px solid var(--glass-border);
         }
 
-        .map-wrapper iframe {
+        .map-section iframe {
             width: 100%;
             height: 100%;
-            border: 0;
-            filter: grayscale(1) invert(0.1) opacity(0.85);
-            /* Styling google map for luxury look */
+            border: none;
+            filter: grayscale(1) invert(0.9) contrast(0.8) brightness(1.1);
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header (Floating Design) -->
+    <!-- Premium Header -->
     <header class="header">
-        <div class="header-box">
-            <a href="index.html" class="logo">Velaris<span>Homes</span></a>
-            <div class="hamburger"><span></span><span></span><span></span></div>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">VELARIS<span>HOMES</span></a>
+            
             <nav class="nav">
-                <a href="index.html">Startseite</a>
-                <a href="immobilien.html">Immobilien</a>
-                <a href="ueber-uns.html">Über uns</a>
-                <a href="leistungen.html">Leistungen</a>
-                <a href="kontakt.html" class="active">Kontakt</a>
+                <a href="index.html" class="nav-link">Residenzen</a>
+                <a href="immobilien.html" class="nav-link">Portfolio</a>
+                <a href="ueber-uns.html" class="nav-link">Expertise</a>
+                <a href="leistungen.html" class="nav-link">Services</a>
+                <a href="kontakt.html" class="nav-link active">Verbindung</a>
+
+                <div class="nav-footer">
+                    <a href="index.html" class="logo footer-logo">VELARIS<span>HOMES</span></a>
+                    <p class="footer-desc">Ihre erste Adresse für Premium-Immobilien und professionelle Vermittlung. Wir begleiten Sie von der ersten Vision bis zur Schlüsselübergabe.</p>
+                    
+                    <h4 class="footer-title">Portfolio</h4>
+                    <ul class="footer-links">
+                        <li><a href="immobilien.html">Design Villen</a></li>
+                        <li><a href="immobilien.html">Crown Penthouses</a></li>
+                        <li><a href="immobilien.html">Modern Lofts</a></li>
+                        <li><a href="immobilien.html">Historische Estates</a></li>
+                    </ul>
+                
+                    <h4 class="footer-title">Expertise</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über Velaris</a></li>
+                        <li><a href="ueber-uns.html">Unsere Werte</a></li>
+                        <li><a href="ueber-uns.html">Netzwerk</a></li>
+                        <li><a href="ueber-uns.html">Referenzen</a></li>
+                    </ul>
+                
+                    <h4 class="footer-title">In Kontakt bleiben</h4>
+                    <p class="footer-desc">Abonnieren Sie unseren Newsletter für exklusive Angebote.</p>
+                    <div class="newsletter-box">
+                        <input type="email" placeholder="E-Mail Adresse">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
             </nav>
-            <div class="actions">
-                <a href="kontakt.html" class="cta">Besichtigung</a>
+
+            <div class="header-actions">
+                <a href="kontakt.html" class="btn btn-outline" style="padding: 12px 28px;">Besichtigung anfragen</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
 
-    <main style="padding-top: 90px;">
+    <!-- Header Section -->
+    <section style="padding-top: 180px; padding-bottom: 80px;">
+        <div class="container">
+            <span class="hero-subtitle">Kontakt</span>
+            <h1 class="title-lg gradient-text">Lassen Sie uns Ihre<br>Vision realisieren.</h1>
+        </div>
+    </section>
 
-        <!-- Header -->
-        <section class="section-padding" style="background-color: var(--color-bg-main); text-align: center;">
-            <div class="container fade-in">
-                <h4 style="color: var(--color-accent); text-transform: uppercase;">Kontakt</h4>
-                <h1 style="font-size: 4rem; margin-bottom: 20px;">Sprechen wir über <br>Ihre Wohnträume</h1>
-                <p style="font-size: 1.2rem; opacity: 0.8; max-width: 700px; margin: 0 auto;">Ob Beratung,
-                    Wertermittlung oder Besichtigung – wir sind persönlich für Sie da.</p>
-            </div>
-        </section>
-
-        <!-- Form and Info -->
-        <section class="section-padding">
-            <div class="container">
-                <div class="contact-grid">
-
-                    <!-- Form -->
-                    <div class="fade-in">
-                        <h2 style="font-size: 2.5rem; margin-bottom: 35px;">Schreiben Sie uns</h2>
-                        <form action="#"
-                            onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze.');">
-                            <div class="form-group">
-                                <label>Vollständiger Name</label>
-                                <input type="text" placeholder="Julian Franke" required>
-                            </div>
-                            <div class="form-group">
-                                <label>E-Mail Adresse</label>
-                                <input type="email" placeholder="m.muster@347gmail.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Nachricht</label>
-                                <textarea rows="6" placeholder="Wie können wir Ihnen helfen?"></textarea>
-                            </div>
-                            <button class="btn btn-primary" style="width: 100%; padding: 18px;">Nachricht
-                                senden</button>
-                        </form>
+    <!-- Contact Form Section -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div class="grid-2">
+                
+                <div>
+                    <div class="contact-info-item">
+                        <span class="info-label">Hauptsitz</span>
+                        <p class="info-value">Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <span class="info-label">Direkte Verbindung</span>
+                        <p class="info-value">+49 15566284478<br>anfrage@velaris-homes.de</p>
                     </div>
 
-                    <!-- Info -->
-                    <div class="fade-in" style="transition-delay: 0.2s;">
-                        <h2 style="font-size: 2.5rem; margin-bottom: 35px;">Anfahrt & Details</h2>
-                        <div style="margin-bottom: 40px;">
-                            <p
-                                style="font-weight: 800; text-transform: uppercase; font-size: 0.8rem; color: var(--color-accent);">
-                                Standort</p>
-                            <p style="font-size: 1.2rem; margin-top: 10px;">Max-Eyth-Straße 681<br>89415 Lauingen
-                                (Donau)</p>
-                        </div>
-                        <div style="margin-bottom: 40px;">
-                            <p
-                                style="font-weight: 800; text-transform: uppercase; font-size: 0.8rem; color: var(--color-accent);">
-                                Kontakt</p>
-                            <p style="font-size: 1.2rem; margin-top: 10px;">Büro: +49 15566284478<br>E-Mail:
-                                anfrage@velaris-homes.de</p>
-
-                        </div>
-                        <div>
-                            <p
-                                style="font-weight: 800; text-transform: uppercase; font-size: 0.8rem; color: var(--color-accent);">
-                                Öffnungszeiten</p>
-                            <p style="font-size: 1.2rem; margin-top: 10px;">Mo - Fr: 09:00 - 18:00 Uhr<br>Sa: Nach
-                                Vereinbarung</p>
-                        </div>
+                    <div class="contact-info-item">
+                        <span class="info-label">Geschäftszeiten</span>
+                        <p class="info-value">Montag — Freitag<br>09:00 — 18:00 Uhr</p>
                     </div>
-
                 </div>
 
-                <!-- Map Integration -->
-                <div class="map-wrapper fade-in">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.1!2d10.42!3d48.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDMzJzM2LjAiTiAxMMKwMjUnMTIuMCJF!5e0!3m2!1sde!2sde!4v1680000000000"
-                        allowfullscreen="" loading="lazy"></iframe>
+                <div class="contact-form-container">
+                    <form action="#" onsubmit="event.preventDefault(); alert('Vielen Dank. Ein Berater wird sich in Kürze diskret bei Ihnen melden.');">
+                        <div class="form-group">
+                            <label>Ihr Name</label>
+                            <input type="text" placeholder="Julian Franke" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-Mail Adresse</label>
+                            <input type="email" placeholder="julian.franke@privat.de" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ihr Anliegen</label>
+                            <textarea rows="5" placeholder="Wie können wir Ihnen bei Ihrer Immobiliensuche behilflich sein?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px;">Anfrage diskret senden</button>
+                    </form>
                 </div>
+
             </div>
-        </section>
 
-    </main>
+            <!-- Map View -->
+            <div class="map-section">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.1!2d10.42!3d48.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDMzJzM2LjAiTiAxMMKwMjUnMTIuMCJF!5e0!3m2!1sde!2sde!4v1680000000000" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="index.html" class="logo"
-                        style="color: white; font-size: 2rem; display: block; margin-bottom: 30px;">Velaris<span>Homes</span></a>
-                    <p>Ihre Experten für exklusive Immobilienvermittlung. Seit über 20 Jahren verbinden wir Luxus mit
-                        Transparenz und Professionalität.</p>
+                    <a href="index.html" class="logo footer-logo">VELARIS<span>HOMES</span></a>
+                    <p class="footer-desc">Ihre erste Adresse für Premium-Immobilien und professionelle Vermittlung. Wir begleiten Sie von der ersten Vision bis zur Schlüsselübergabe.</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Menü</h3>
-                    <div class="footer-links">
-                        <a href="index.html">Startseite</a>
-                        <a href="immobilien.html">Immobilien</a>
-                        <a href="ueber-uns.html">Über uns</a>
-                        <a href="leistungen.html">Leistungen</a>
-                        <a href="kontakt.html">Kontakt</a>
-                    </div>
+                    <h4 class="footer-title">Portfolio</h4>
+                    <ul class="footer-links">
+                        <li><a href="immobilien.html">Design Villen</a></li>
+                        <li><a href="immobilien.html">Crown Penthouses</a></li>
+                        <li><a href="immobilien.html">Modern Lofts</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Services</h3>
-                    <div class="footer-links">
-                        <a href="#">Kaufen</a>
-                        <a href="#">Verkaufen</a>
-                        <a href="#">Mieten</a>
-                        <a href="#">Wertermittlung</a>
-                        <a href="#">Finanzierung</a>
-                    </div>
+                    <h4 class="footer-title">Expertise</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über Velaris</a></li>
+                        <li><a href="leistungen.html">Services</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Kontakt</h3>
-                    <p><i class="fas fa-map-marker-alt" style="margin-right: 15px; color: var(--color-accent);"></i>
-                        Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
-                    <p><i class="fas fa-phone" style="margin-right: 15px; color: var(--color-accent);"></i> +49 15566284478</p>
-                    <p><i class="fas fa-envelope" style="margin-right: 15px; color: var(--color-accent);"></i> anfrage@velaris-homes.de</p>
+                    <h4 class="footer-title">Verbindung</h4>
+                    <p class="footer-desc">Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
+                    <p class="footer-desc" style="margin-top: 10px;">+49 15566284478</p>
                 </div>
             </div>
-            <div
-                style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; opacity: 0.5; font-size: 0.85rem;">
-                <p>&copy; 2026 Velaris Homes Immobilien | <a href="impressum.html"
-                        style="margin: 0 10px; color: var(--color-accent);">Impressum</a> | <a href="datenschutz.html"
-                        style="margin: 0 10px; color: var(--color-accent);">Datenschutz</a></p>
+            
+            <div style="border-top: 1px solid var(--glass-border); padding-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 13px;">
+                <p>&copy; 2026 VELARIS HOMES | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    </script>
     <script src="js/navigation.js"></script>
 </body>
 
