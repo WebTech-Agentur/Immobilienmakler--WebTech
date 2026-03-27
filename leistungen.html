@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unsere Leistungen | Velaris Homes</title>
+    <title>Exklusive Services | Velaris Homes</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,168 +16,223 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
     <style>
-        .service-card {
-            background: white;
-            padding: 50px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-gray);
-            transition: var(--transition);
+        .service-feature-card {
+            background: var(--color-secondary);
+            border: 1px solid var(--glass-border);
+            padding: 60px;
+            border-radius: 40px;
+            transition: transform 0.1s ease-out, border-color 0.4s ease, background 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            text-align: left;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
+        .service-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(197, 160, 89, 0.12) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .service-feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-feature-card:hover {
             border-color: var(--color-accent);
+            background: rgba(197, 160, 89, 0.05);
         }
 
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background-color: var(--color-gray-light);
+        .service-icon-box {
+            font-size: 3.5rem;
             color: var(--color-accent);
+            margin-bottom: 30px;
+            transform: translateZ(50px);
+            transition: var(--transition-smooth);
+            display: inline-block;
+        }
+
+        .service-feature-card:hover .service-icon-box {
+            transform: translateZ(80px) scale(1.1);
+            filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.4));
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--color-white);
+            transform: translateZ(30px);
+        }
+
+        .service-desc {
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            transform: translateZ(20px);
+        }
+
+        .service-line {
+            width: 50px;
+            height: 2px;
+            background: var(--color-accent);
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+            transform: translateZ(25px);
+        }
+
+        .service-feature-card:hover .service-line {
+            width: 100px;
+        }
+
+        .show-service-detail {
+            transform: translateZ(40px);
+        }
+
+        /* Specialized Modal */
+        .service-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            border-radius: 15px;
-            margin-bottom: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
         }
 
-        .service-category-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--color-accent);
-            display: inline-block;
+        .service-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .service-modal-inner {
+            background: var(--color-secondary);
+            border: 1px solid var(--glass-border);
+            max-width: 800px;
+            padding: 80px;
+            border-radius: 40px;
+            position: relative;
+            text-align: center;
+            transform: scale(0.8) translateY(50px);
+            transition: var(--transition-smooth);
+        }
+
+        .service-modal.active .service-modal-inner {
+            transform: scale(1) translateY(0);
+        }
+
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header (Floating Design) -->
+    <!-- Premium Header -->
     <header class="header">
-        <div class="header-box">
-            <a href="index.html" class="logo">Velaris<span>Homes</span></a>
-            <div class="hamburger"><span></span><span></span><span></span></div>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">VELARIS<span>HOMES</span></a>
+            
             <nav class="nav">
-                <a href="index.html">Startseite</a>
-                <a href="immobilien.html">Immobilien</a>
-                <a href="ueber-uns.html">Über uns</a>
-                <a href="leistungen.html" class="active">Leistungen</a>
-                <a href="kontakt.html">Kontakt</a>
+                <a href="index.html" class="nav-link">Residenzen</a>
+                <a href="immobilien.html" class="nav-link">Portfolio</a>
+                <a href="ueber-uns.html" class="nav-link">Expertise</a>
+                <a href="leistungen.html" class="nav-link active">Services</a>
+                <a href="kontakt.html" class="nav-link">Verbindung</a>
             </nav>
-            <div class="actions">
-                <a href="kontakt.html" class="cta">Besichtigung</a>
+
+            <div class="header-actions">
+                <a href="kontakt.html" class="btn btn-outline" style="padding: 12px 28px;">Besichtigung anfragen</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
 
-    <main style="padding-top: 90px;">
+    <!-- Header Section -->
+    <section style="padding-top: 180px; padding-bottom: 80px;">
+        <div class="container">
+            <span class="hero-subtitle reveal-item">Unser Angebot</span>
+            <h1 class="title-lg gradient-text reveal-item">Exzellenz in jeder<br>Phase der Vermittlung.</h1>
+        </div>
+    </section>
 
-        <!-- Intro -->
-        <section class="section-padding">
-            <div class="container fade-in" style="text-align: center;">
-                <h4 style="color: var(--color-accent); text-transform: uppercase;">Portfolio</h4>
-                <h1 style="font-size: 3.5rem; margin-bottom: 30px;">Exklusiver Service <br>für Anspruchsvolle</h1>
-                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: var(--color-text-muted);">
-                    Profitieren Sie von unserem ganzheitlichen Ansatz. Ob Verkauf, Kauf oder Vermietung – wir begleiten Sie mit höchster Expertise und Diskretion.
+    <!-- Services Grid -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 100px;">
+                
+                <!-- Service 1 -->
+                <div class="service-feature-card reveal-item" data-full-desc="Wir führen eine detaillierte Marktanalyse durch, die weit über Standardbewertungen hinausgeht. Unter Berücksichtigung von Off-Market Verkäufen, Architektur-Werten und Zukunftsprognosen ermitteln wir den optimalen Preis für Ihre Immobilie.">
+                    <div class="service-icon-box"><i class="fas fa-chart-line"></i></div>
+                    <div class="service-line"></div>
+                    <h3 class="service-title">Präzise Wertermittlung</h3>
+                    <p class="service-desc">Fundierte Marktanalyse unter Einbeziehung von Exklusivdaten und aktuellen Trends.</p>
+                    <button class="btn btn-outline show-service-detail" style="width: fit-content; padding: 10px 20px;">Details</button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-feature-card reveal-item" data-full-desc="Unser High-End Marketing umfasst professionelles Home Staging, 8K-Drohnenaufnahmen und gezielte Platzierung in internationalen Luxus-Netzwerken. Wir erstellen digitale Erlebnisse, keine einfachen Anzeigen.">
+                    <div class="service-icon-box"><i class="fas fa-bullhorn"></i></div>
+                    <div class="service-line"></div>
+                    <h3 class="service-title">Premium Vermarktung</h3>
+                    <p class="service-desc">Gezielte Zielgruppenansprache durch emotionales Storytelling und digitales High-End Design.</p>
+                    <button class="btn btn-outline show-service-detail" style="width: fit-content; padding: 10px 20px;">Details</button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-feature-card reveal-item" data-full-desc="Nicht jede Perle gehört in die Auslage. Wir verfügen über einen exklusiven Off-Market Bereich für Verkäufer und Käufer, die höchste Diskretion wünschen. Hier vermitteln wir Objekte, die niemals öffentlich erscheinen.">
+                    <div class="service-icon-box"><i class="fas fa-key"></i></div>
+                    <div class="service-line"></div>
+                    <h3 class="service-title">Off-Market Exklusivität</h3>
+                    <p class="service-desc">Diskrete Vermittlung außergewöhnlicher Objekte außerhalb der öffentlichen Portale.</p>
+                    <button class="btn btn-outline show-service-detail" style="width: fit-content; padding: 10px 20px;">Details</button>
+                </div>
+
+            </div>
+
+            <div style="background: var(--color-secondary); padding: 80px; border-radius: 40px; text-align: center; border: 1px solid var(--glass-border);">
+                <h2 class="title-md" style="margin-bottom: 20px;">Individuelle Suchmandate</h2>
+                <p style="color: var(--color-text-muted); max-width: 700px; margin: 0 auto 40px; line-height: 1.8;">
+                    Sie suchen etwas ganz Bestimmtes? Wir übernehmen für Sie die aktive Suche am Markt und in unserem privaten Netzwerk. Profitieren Sie von unserem Zugang zu Objekten, bevor diese offiziell angeboten werden.
                 </p>
-            </div>
-        </section>
-
-        <!-- For Sellers -->
-        <section class="section-padding" style="background-color: var(--color-bg-main);">
-            <div class="container">
-                <h2 class="service-category-title">Für Verkäufer</h2>
-                
-                <div class="services-grid-3">
-                    <div class="service-card fade-in" 
-                        data-title="Wertermittlung" 
-                        data-desc="Eine präzise Wertermittlung ist das Fundament für einen erfolgreichen Verkauf. Wir nutzen modernste Analysetools, kombinieren diese mit unserer langjährigen Marktkenntnis und erstellen für Sie ein fundiertes Marktwertgutachten. Dabei berücksichtigen wir Lage, Zustand, Ausstattung und das aktuelle Marktumfeld in Echtzeit.">
-                        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Wertermittlung</h3>
-                        <p style="color: var(--color-text-muted);">Wir analysieren den aktuellen Marktpreis Ihrer Immobilie fundiert und präzise.</p>
-                        <a href="javascript:void(0)" class="btn-more" style="color: var(--color-accent); font-weight: 700; margin-top: auto; text-decoration: none;">Mehr erfahren <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                    
-                    <div class="service-card fade-in" style="transition-delay: 0.1s;"
-                        data-title="Premium-Vermarktung" 
-                        data-desc="Ihre Immobilie verdient eine Präsentation auf höchstem Niveau. Wir erstellen nicht nur Standardanzeigen, sondern setzen auf emotionales Storytelling und exklusives Design. Durch unser handverlesenes Netzwerk sprechen wir gezielt qualifizierte Kaufinteressenten an, oft noch bevor das Objekt auf den öffentlichen Portalen erscheint.">
-                        <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
-                        <h3>Premium-Vermarktung</h3>
-                        <p style="color: var(--color-text-muted);">Gezielte Platzierung in unserem exklusiven Netzwerk und auf High-End-Portalen.</p>
-                        <a href="javascript:void(0)" class="btn-more" style="color: var(--color-accent); font-weight: 700; text-decoration: none;">Mehr erfahren <i class="fas fa-chevron-right"></i></a>
-                    </div>
-
-                    <div class="service-card fade-in" style="transition-delay: 0.2s;"
-                        data-title="Exposé-Erstellung" 
-                        data-desc="Der erste Eindruck entscheidet. Wir rücken Ihre Immobilie ins rechte Licht – mit professionellen HDR-Fotos, hochauflösenden Drohnenaufnahmen für einen beeindruckenden Überblick und interaktiven 3D-Rundgängen. So können Interessenten Ihr Objekt bereits virtuell erleben, was die Qualität der Anfragen deutlich steigert.">
-                        <div class="service-icon"><i class="fas fa-camera-retro"></i></div>
-                        <h3>Exposé-Erstellung</h3>
-                        <p style="color: var(--color-text-muted);">Hochwertige Drohnenaufnahmen, professionelle Interior-Fotos und 3D-Rundgänge.</p>
-                        <a href="javascript:void(0)" class="btn-more" style="color: var(--color-accent); font-weight: 700; text-decoration: none;">Mehr erfahren <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- For Buyers -->
-        <section class="section-padding">
-            <div class="container">
-                <h2 class="service-category-title">Für Käufer</h2>
-                
-                <div class="services-grid-2">
-                    <div class="service-card fade-in" 
-                        data-title="Persönliche Beratung" 
-                        data-desc="Wir nehmen uns Zeit für Sie. In einem ausführlichen Erstgespräch analysieren wir Ihre Wünsche und Bedürfnisse bis ins Detail. Unser Ziel ist es, nicht nur ein Haus zu finden, sondern das perfekte Zuhause für Ihren individuellen Lebensstil.">
-                        <div class="service-icon"><i class="fas fa-handshake"></i></div>
-                        <h3>Persönliche Beratung</h3>
-                        <p style="color: var(--color-text-muted);">Wir finden die Immobilie, die exakt zu Ihrem Lebensstil und Ihren Anforderungen passt.</p>
-                        <a href="javascript:void(0)" class="btn-more" style="color: var(--color-accent); font-weight: 700; margin-top: auto; text-decoration: none;">Mehr erfahren <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                    
-                    <div class="service-card fade-in" style="transition-delay: 0.1s;"
-                        data-title="Finanzierungshilfe" 
-                        data-desc="Eine solide Finanzierung ist das Herzstück Ihres Immobilienkaufs. Wir vermitteln Ihnen Kontakte zu erstklassigen Finanzierungspartnern und Private-Banking-Beratern, die maßgeschneiderte Konzepte für Ihre Situation entwickeln – kompetent, diskret und schnell.">
-                        <div class="service-icon"><i class="fas fa-coins"></i></div>
-                        <h3>Finanzierungshilfe</h3>
-                        <p style="color: var(--color-text-muted);">Zugang zu erstklassigen Finanzpartnern für eine reibungslose Kaufabwicklung.</p>
-                        <a href="javascript:void(0)" class="btn-more" style="color: var(--color-accent); font-weight: 700; text-decoration: none;">Mehr erfahren <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Valuation CTA -->
-        <div style="background-color: var(--color-primary); padding: 80px 0; text-align: center; color: white;">
-            <div class="container">
-                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 20px;">Bereit für eine Einschätzung?</h2>
-                <p style="font-size: 1.2rem; opacity: 0.7; margin-bottom: 40px; max-width: 600px; margin: 0 auto 40px;">Kontaktieren Sie uns für eine kostenlose und diskrete Erstberatung.</p>
-                <a href="kontakt.html" class="btn btn-primary">Kostenlose Beratung anfordern</a>
+                <a href="kontakt.html" class="btn btn-primary">Suchauftrag erteilen</a>
             </div>
         </div>
+    </section>
 
-    </main>
-
-    <!-- Services Modal -->
-    <div id="service-modal" class="modal">
-        <div class="modal-container" style="display: block; max-width: 600px;">
-            <button class="modal-close"><i class="fas fa-times"></i></button>
-            <div class="modal-body" style="padding: 50px;">
-                <span class="modal-tag" style="margin-bottom: 10px;">Service Details</span>
-                <h2 class="modal-title" id="service-modal-title" style="margin-bottom: 25px;">Service Name</h2>
-                <p class="modal-desc" id="service-modal-desc" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 35px;">Informationen werden geladen...</p>
-                <a href="kontakt.html" class="btn btn-primary" style="width: 100%;">Jetzt anfragen</a>
-            </div>
+    <!-- Modal -->
+    <div class="service-modal" id="service-modal">
+        <div class="service-modal-inner">
+            <button class="modal-close" style="position: absolute; top: 30px; right: 30px; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;"><i class="fas fa-times"></i></button>
+            <span class="hero-subtitle">Service Detail</span>
+            <h2 class="title-md" id="modal-title" style="margin-bottom: 30px;">Titel</h2>
+            <p id="modal-desc" style="color: var(--color-text-muted); line-height: 1.8; font-size: 1.1rem; margin-bottom: 40px;">Details...</p>
+            <a href="kontakt.html" class="btn btn-primary">Jetzt anfragen</a>
         </div>
     </div>
 
@@ -186,72 +241,133 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="index.html" class="logo" style="color: white; font-size: 2rem; display: block; margin-bottom: 30px;">Velaris<span>Homes</span></a>
-                    <p>Ihre Experten für exklusive Immobilienvermittlung. Seit über 20 Jahren verbinden wir Luxus mit Transparenz und Professionalität.</p>
+                    <a href="index.html" class="logo footer-logo">VELARIS<span>HOMES</span></a>
+                    <p class="footer-desc">Ihre erste Adresse für Premium-Immobilien und professionelle Vermittlung. Wir begleiten Sie von der ersten Vision bis zur Schlüsselübergabe.</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Menü</h3>
-                    <div class="footer-links">
-                        <a href="index.html">Startseite</a>
-                        <a href="immobilien.html">Immobilien</a>
-                        <a href="ueber-uns.html">Über uns</a>
-                        <a href="leistungen.html">Leistungen</a>
-                        <a href="kontakt.html">Kontakt</a>
+                    <h4 class="footer-title">Portfolio</h4>
+                    <ul class="footer-links">
+                        <li><a href="immobilien.html">Design Villen</a></li>
+                        <li><a href="immobilien.html">Crown Penthouses</a></li>
+                        <li><a href="immobilien.html">Modern Lofts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Expertise</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über Velaris</a></li>
+                        <li><a href="#">Unsere Werte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">In Kontakt bleiben</h4>
+                    <p class="footer-desc">Abonnieren Sie unseren kuratierten Newsletter für exklusive Off-Market Angebote.</p>
+                    <div class="newsletter-box">
+                        <input type="email" placeholder="E-Mail Adresse">
+                        <button><i class="fas fa-paper-plane"></i></button>
                     </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <div class="footer-links">
-                        <a href="#">Kaufen</a>
-                        <a href="#">Verkaufen</a>
-                        <a href="#">Mieten</a>
-                        <a href="#">Wertermittlung</a>
-                        <a href="#">Finanzierung</a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Kontakt</h3>
-                    <p><i class="fas fa-map-marker-alt" style="margin-right: 15px; color: var(--color-accent);"></i>
-                        Max-Eyth-Straße 681<br>89415 Lauingen (Donau)</p>
-                    <p><i class="fas fa-phone" style="margin-right: 15px; color: var(--color-accent);"></i> +49 15566284478</p>
-                    <p><i class="fas fa-envelope" style="margin-right: 15px; color: var(--color-accent);"></i> anfrage@velaris-homes.de</p>
                 </div>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; opacity: 0.5; font-size: 0.85rem;">
-                <p>&copy; 2026 Velaris Homes Immobilien | <a href="impressum.html" style="margin: 0 10px; color: var(--color-accent);">Impressum</a> | <a href="datenschutz.html" style="margin: 0 10px; color: var(--color-accent);">Datenschutz</a></p>
+            
+            <div style="border-top: 1px solid var(--glass-border); padding-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 13px;">
+                <p>&copy; 2026 VELARIS HOMES | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <script>
+        // Modal Logic
         const modal = document.getElementById('service-modal');
-        const modalClose = document.querySelector('.modal-close');
-        const moreButtons = document.querySelectorAll('.btn-more');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
 
-        moreButtons.forEach(btn => {
+        document.querySelectorAll('.show-service-detail').forEach(btn => {
             btn.addEventListener('click', () => {
-                const card = btn.closest('.service-card');
-                document.getElementById('service-modal-title').innerText = card.getAttribute('data-title');
-                document.getElementById('service-modal-desc').innerText = card.getAttribute('data-desc');
-                
+                const card = btn.closest('.service-feature-card');
+                modalTitle.innerText = card.querySelector('.service-title').innerText;
+                modalDesc.innerText = card.getAttribute('data-full-desc');
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
             });
         });
 
-        modalClose.addEventListener('click', () => {
+        document.querySelector('.modal-close').addEventListener('click', () => {
             modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
         });
 
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
+        // 3D Tilt & Spotlight Effect
+        const cards = document.querySelectorAll('.service-feature-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Spotlight variables
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                
+                // 3D Tilt effect
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                gsap.to(card, {
+                    rotateX: rotateX,
+                    rotateY: rotateY,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    overwrite: true
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    duration: 0.8,
+                    ease: "elastic.out(1, 0.5)"
+                });
+            });
+        });
+
+        // Entrance Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.to('.reveal-item', {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "expo.out",
+            scrollTrigger: {
+                trigger: ".reveal-item",
+                start: "top 85%"
             }
+        });
+
+        // Icon floating animation
+        document.querySelectorAll('.service-icon-box').forEach(icon => {
+            gsap.to(icon, {
+                y: -10,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                delay: Math.random() * 2
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         });
     </script>
     <script src="js/navigation.js"></script>
 </body>
+
 </html>
