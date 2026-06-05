@@ -79,20 +79,6 @@
             line-height: 1.5;
         }
 
-        .map-section {
-            height: 500px;
-            margin-top: 100px;
-            border-radius: 40px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-        }
-
-        .map-section iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            filter: grayscale(1) invert(0.9) contrast(0.8) brightness(1.1);
-        }
     </style>
 </head>
 
@@ -151,16 +137,37 @@
         </div>
     </header>
 
-    <!-- Header Section -->
-    <section style="padding-top: 180px; padding-bottom: 80px;">
-        <div class="container">
-            <span class="hero-subtitle">Kontakt</span>
-            <h1 class="title-lg gradient-text">Lassen Sie uns Ihre<br>Vision realisieren.</h1>
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container hero-split">
+            <div class="hero-left">
+                <span class="hero-subtitle reveal-item">Verbindung</span>
+                <h1 class="title-lg gradient-text reveal-item" style="margin-bottom: 30px;">Lassen Sie uns Ihre<br>Vision realisieren.</h1>
+                <p class="reveal-item" style="color: var(--color-text-muted); max-width: 550px; margin-bottom: 40px; font-size: 1.1rem; line-height: 1.8;">
+                    Ob Sie eine diskrete Off-Market-Immobilie erwerben, Ihre eigene Residenz vermarkten möchten oder eine unverbindliche Beratung wünschen – unser exklusives Berater-Netzwerk steht Ihnen jederzeit persönlich und vertraulich zur Verfügung.
+                </p>
+                <div class="reveal-item" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <a href="#contact-form-section" class="btn btn-primary scroll-to-contact">Anfrage senden</a>
+                    <a href="tel:+4915566284478" class="btn btn-outline"><i class="fas fa-phone" style="margin-right: 10px;"></i>Direkt anrufen</a>
+                </div>
+            </div>
+            
+            <div class="hero-right reveal-item">
+                <div class="connection-graph-container" id="connection-graph-trigger">
+                    <div class="connection-overlay">
+                        <div class="connection-status">
+                            <span class="status-dot"></span>
+                            <span>Globales Netzwerk Aktiv</span>
+                        </div>
+                    </div>
+                    <canvas class="connection-canvas" id="connectionCanvas"></canvas>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Form Section -->
-    <section style="padding-top: 0;">
+    <section id="contact-form-section" style="padding-top: 0;">
         <div class="container">
             <div class="grid-2">
                 
@@ -199,11 +206,6 @@
                     </form>
                 </div>
 
-            </div>
-
-            <!-- Map View -->
-            <div class="map-section">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.1!2d10.42!3d48.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDMzJzM2LjAiTiAxMMKwMjUnMTIuMCJF!5e0!3m2!1sde!2sde!4v1680000000000" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -246,6 +248,155 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script>
+        // Smooth scroll for CTA
+        document.querySelector('.scroll-to-contact').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('#contact-form-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Connection Graph Animation
+        const canvas = document.getElementById('connectionCanvas');
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('connection-graph-trigger');
+
+        let width = canvas.width = container.offsetWidth;
+        let height = canvas.height = container.offsetHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = container.offsetWidth;
+            height = canvas.height = container.offsetHeight;
+        });
+
+        const particles = [];
+        const particleCount = 35;
+        const connectionDistance = 100;
+        const mouseConnectionDistance = 140;
+
+        const mouse = { x: null, y: null };
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+            
+            // Subtle 3D tilt of the whole container on mousemove
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (centerY - mouse.y) / 25;
+            const rotateY = (mouse.x - centerX) / 25;
+            gsap.to(container, {
+                rotateX: rotateX,
+                rotateY: rotateY,
+                duration: 0.5,
+                ease: "power2.out",
+                overwrite: "auto"
+            });
+        });
+
+        container.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+            gsap.to(container, {
+                rotateX: 0,
+                rotateY: 0,
+                duration: 1,
+                ease: "elastic.out(1, 0.5)"
+            });
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.6;
+                this.vy = (Math.random() - 0.5) * 0.6;
+                this.radius = Math.random() * 2 + 1.5;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#C5A059';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw and update particles
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Draw connection lines
+            for (let i = 0; i < particles.length; i++) {
+                const p1 = particles[i];
+
+                // Node-to-Mouse lines
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = p1.x - mouse.x;
+                    const dy = p1.y - mouse.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < mouseConnectionDistance) {
+                        const alpha = (1 - dist / mouseConnectionDistance) * 0.45;
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = `rgba(197, 160, 89, ${alpha})`;
+                        ctx.lineWidth = 1.2;
+                        ctx.stroke();
+                    }
+                }
+
+                // Node-to-Node lines
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < connectionDistance) {
+                        const alpha = (1 - dist / connectionDistance) * 0.15;
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(197, 160, 89, ${alpha})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Entrance Animations
+        gsap.from('.reveal-item', {
+            opacity: 0,
+            y: 30,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "expo.out",
+            delay: 0.2
+        });
+
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 50) header.classList.add('scrolled');

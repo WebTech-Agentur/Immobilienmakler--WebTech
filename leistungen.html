@@ -201,16 +201,49 @@
         </div>
     </header>
 
-    <!-- Header Section -->
-    <section style="padding-top: 180px; padding-bottom: 80px;">
-        <div class="container">
-            <span class="hero-subtitle reveal-item">Unser Angebot</span>
-            <h1 class="title-lg gradient-text reveal-item">Exzellenz in jeder<br>Phase der Vermittlung.</h1>
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container hero-split">
+            <div class="hero-left">
+                <span class="hero-subtitle reveal-item">Unser Angebot</span>
+                <h1 class="title-lg gradient-text reveal-item" style="margin-bottom: 30px;">Exzellenz in jeder<br>Phase der Vermittlung.</h1>
+                <p class="reveal-item" style="color: var(--color-text-muted); max-width: 550px; margin-bottom: 40px; font-size: 1.1rem; line-height: 1.8;">
+                    Wir bieten Ihnen maßgeschneiderte Serviceleistungen auf höchstem Niveau. Von der fundierten Bewertung über zielgerichtete Luxus-Vermarktung bis hin zur diskreten Off-Market Vermittlung – wir begleiten Sie mit Expertise und Leidenschaft.
+                </p>
+                <div class="reveal-item">
+                    <a href="#services-grid" class="btn btn-primary scroll-to-services">Services entdecken</a>
+                </div>
+            </div>
+            
+            <div class="hero-right reveal-item">
+                <div class="services-orb-container" id="services-orb-trigger">
+                    <div class="orbit-ring orbit-ring-1">
+                        <div class="orbit-node node-service-1" style="top: 0; left: 50%; transform: translate(-50%, -50%);" data-service="wert">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="node-label">Wertermittlung</span>
+                        </div>
+                    </div>
+                    <div class="orbit-ring orbit-ring-2">
+                        <div class="orbit-node node-service-2" style="top: 75%; left: 15%; transform: translate(-50%, -50%);" data-service="markt">
+                            <i class="fas fa-bullhorn"></i>
+                            <span class="node-label">Vermarktung</span>
+                        </div>
+                        <div class="orbit-node node-service-3" style="top: 75%; right: 15%; transform: translate(50%, -50%);" data-service="offmarket">
+                            <i class="fas fa-key"></i>
+                            <span class="node-label">Off-Market</span>
+                        </div>
+                    </div>
+                    <div class="services-center-orb">
+                        <span>VELARIS</span>
+                        <span style="font-size: 8px; font-weight: 400; margin-top: 5px; opacity: 0.7;">SERVICES</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Services Grid -->
-    <section style="padding-top: 0;">
+    <section id="services-grid" style="padding-top: 0;">
         <div class="container">
             <div class="grid-3" style="margin-bottom: 100px;">
                 
@@ -358,6 +391,85 @@
                     duration: 0.8,
                     ease: "elastic.out(1, 0.5)"
                 });
+            });
+        });
+
+        // Smooth scroll for CTA
+        document.querySelector('.scroll-to-services').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('#services-grid').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Services Orb Parallax Tilt
+        const orbTrigger = document.getElementById('services-orb-trigger');
+        const centerOrb = document.querySelector('.services-center-orb');
+        const orbitRings = document.querySelectorAll('.orbit-ring');
+
+        if (orbTrigger) {
+            orbTrigger.addEventListener('mousemove', (e) => {
+                const rect = orbTrigger.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (centerY - y) / 12;
+                const rotateY = (x - centerX) / 12;
+
+                gsap.to(orbTrigger, {
+                    rotateX: rotateX,
+                    rotateY: rotateY,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    overwrite: "auto"
+                });
+
+                gsap.to(centerOrb, {
+                    x: (x - centerX) / 8,
+                    y: (y - centerY) / 8,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    overwrite: "auto"
+                });
+
+                orbitRings.forEach((ring, i) => {
+                    gsap.to(ring, {
+                        x: (x - centerX) / (15 + i * 10),
+                        y: (y - centerY) / (15 + i * 10),
+                        duration: 0.6,
+                        ease: "power2.out",
+                        overwrite: "auto"
+                    });
+                });
+            });
+
+            orbTrigger.addEventListener('mouseleave', () => {
+                gsap.to(orbTrigger, { rotateX: 0, rotateY: 0, duration: 1, ease: "elastic.out(1, 0.5)" });
+                gsap.to(centerOrb, { x: 0, y: 0, duration: 1, ease: "elastic.out(1, 0.5)" });
+                orbitRings.forEach(ring => {
+                    gsap.to(ring, { x: 0, y: 0, duration: 1, ease: "elastic.out(1, 0.5)" });
+                });
+            });
+        }
+
+        // Orbit Nodes Click Handler
+        const serviceCards = document.querySelectorAll('.service-feature-card');
+        document.querySelectorAll('.orbit-node').forEach(node => {
+            node.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const serviceType = node.getAttribute('data-service');
+                let cardIndex = 0;
+                if (serviceType === 'wert') cardIndex = 0;
+                else if (serviceType === 'markt') cardIndex = 1;
+                else if (serviceType === 'offmarket') cardIndex = 2;
+                
+                const card = serviceCards[cardIndex];
+                if (card) {
+                    modalTitle.innerText = card.querySelector('.service-title').innerText;
+                    modalDesc.innerText = card.getAttribute('data-full-desc');
+                    modal.classList.add('active');
+                }
             });
         });
 
